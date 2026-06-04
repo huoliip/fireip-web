@@ -12,17 +12,21 @@
     <div class="features">        <div class="feature-item"><b>全球覆盖</b>190+ 国家原生</div>        <div class="feature-item"><b>极速稳定</b>低延迟秒连</div>        <div class="feature-item"><b>独享节点</b>纯净不跳跃</div>        <div class="feature-item"><b>全天客服</b>响应更及时</div>    </div>
 
     <div class="card">
-        <h3 style="font-size: 16px; margin-bottom: 10px; text-align: center;">💡 选购建议</h3>
+        <h3 style="font-size: 16px; margin-bottom: 10px; text-align: center;">💡 选购建议 & 联系我们</h3>
         <ul style="font-size: 13px; text-align: left; color: #475569; padding-left: 20px; margin-bottom: 15px;">
             <li><b>静态 IP：</b> 适合长期登录、账号保护、电商运营。</li>
             <li><b>动态 IP：</b> 适合网页采集、流量测试、频繁切换需求。</li>
         </ul>
-        <a class="btn-link" style="background: var(--accent);" href="https://t.me/huoli_proxy">➡️ 获取常用软件与配置教程</a>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <a class="btn-link" style="background: #059669; font-size: 13px;" href="mqqwpa://im/chat?chat_type=wpa&uin=272734257&version=1&src_type=web">跳转添加QQ</a>
+            <a class="btn-link" style="background: #2563eb; font-size: 13px;" href="https://t.me/huoli_proxy">进入TG频道</a>
+        </div>
+        <button class="btn-link" style="background: #10b981; font-size: 13px; border: none; width: 100%;" onclick="alert('请手动复制微信号：a15016410566')">点击获取微信号</button>
     </div>
 
     <div class="brand-box">        <div class="brand-title">官方授权代理品牌</div>        <div class="price-tag">全网最低价，有量有价，欢迎询盘</div>        <div class="brand-grid">            <div class="brand-item">711proxy.com</div>            <div class="brand-item">kookeey.com</div>            <div class="brand-item">cliproxy.com</div>            <div class="brand-item">b2proxy.com</div>            <div class="brand-item">lokiproxy.com</div>            <div class="brand-item">iprocket.io</div>            <div class="brand-item">ipweb.cc</div>            <div class="brand-item">ipwo.net</div>        </div>    </div></div>
 <script>    function generateQRCode() {        var rawText = document.getElementById('inputText').value;        var proto = document.getElementById('protocolSelect').value;        var lines = rawText.split('\n').filter(line => line.trim() !== "");        var container = document.getElementById('socksURLContainer');        var qrcodeDiv = document.getElementById('qrcode');        container.innerHTML = '';        qrcodeDiv.innerHTML = '';
 
-        lines.forEach(function(line) {            var p = line.split(':');            if(p.length >= 4) {                var url;                if (proto === "http://") {                    url = "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1];                } else {                    url = proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ':' + p[1] + '#' + p[0];                }
+        lines.forEach(function(line) {            var p = line.split(':');            if(p.length >= 4) {                var url;                if (proto === "http://") {                    url = "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1];                } else {                    url = proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];                }
                 var div = document.createElement('div');                div.style.marginBottom = "8px";                div.textContent = url;                container.appendChild(div);
                 if (container.children.length === 1) {                    new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });                }            }        });    }</script></body></html>
