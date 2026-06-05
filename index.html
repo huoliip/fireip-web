@@ -13,21 +13,24 @@
         
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
-        @keyframes breath { 0% { box-shadow: 0 0 5px #f59e0b; } 50% { box-shadow: 0 0 15px #f59e0b; } 100% { box-shadow: 0 0 5px #f59e0b; } }
-        .promo-card { border: 2px solid #f59e0b !important; background: #fffbeb; animation: breath 2s infinite ease-in-out; margin-bottom: 10px; }
         
-        /* 极致仿真火焰：底部固定，顶部自然波动 */
-        .fire-box { display: inline-flex; align-items: flex-end; justify-content: center; width: 24px; height: 28px; vertical-align: middle; position: relative; }
-        .flame-svg { 
-            width: 100%; height: 100%; fill: url(#fireGradient); 
-            animation: flame-dance 0.8s infinite alternate ease-in-out;
-            transform-origin: bottom center;
+        /* 高级呼吸光影效果 */
+        .promo-card { 
+            border: 2px solid transparent !important;
+            background: linear-gradient(white, white) padding-box, 
+                        linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b) border-box;
+            animation: gold-breath 3s infinite ease-in-out;
+            margin-bottom: 10px;
+            position: relative;
         }
-        @keyframes flame-dance {
-            0% { transform: scale(1, 1) rotate(-2deg); opacity: 0.9; }
-            50% { transform: scale(1.1, 1.2) rotate(0deg); opacity: 1; }
-            100% { transform: scale(0.95, 1.1) rotate(2deg); opacity: 0.8; }
+        @keyframes gold-breath {
+            0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); }
         }
+
+        /* 关键信息高亮样式 */
+        .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
+        .highlight-orange { color: #d97706; font-weight: bold; font-size: 1.1em; }
 
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
         .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; font-size: 13px; }
@@ -86,13 +89,14 @@
     <div class="brand-box">
         <div class="card promo-card">
             <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;">
-                <span class="fire-box">
-                    <svg class="flame-svg" viewBox="0 0 24 24"><defs><linearGradient id="fireGradient" x1="50%" y1="0%" x2="50%" y2="100%"><stop offset="0%" style="stop-color:#ff9800"/><stop offset="100%" style="stop-color:#f44336"/></linearGradient></defs><path d="M12 24c0 0-10-8-10-16 0-5 5-8 10-8s10 3 10 8c0 8-10 16-10 16z"/></svg>
-                </span> 限时福利 (仅限每天前 10 位购入者) <span class="fire-box">
-                    <svg class="flame-svg" viewBox="0 0 24 24"><use xlink:href="#fireGradient"/></svg>
-                </span>
+                <span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)
             </div>
-            <div style="font-size: 13px; color: #92400e; text-align: center;">单次购买动态流量 <b>1T 以上</b>，额外加赠 <b>100G</b>。</div>
+            <div style="font-size: 13px; color: #92400e; text-align: center;">
+                单次购买动态流量 <b>1T 以上</b>，额外<span class="highlight-red">加赠 100G</span>。
+            </div>
+            <div style="font-size: 11px; color: #b45309; text-align: center; margin-top: 8px;">
+                今日剩余名额：<span id="stock-num" style="font-weight:bold; color:red;">3</span> 个
+            </div>
         </div>
         <div class="brand-title">官方授权【动态】代理品牌</div>
         <div class="brand-subtitle">我们已对下述全球主流代理平台进行深度压力测试，FireIP 用户可享受专属优先调度与技术适配。</div>
@@ -137,6 +141,12 @@
     </div>
 </div>
 <script>
+    // 动态库存倒计时逻辑
+    setInterval(() => {
+        let num = document.getElementById('stock-num');
+        if(parseInt(num.innerText) > 1) num.innerText = parseInt(num.innerText) - 1;
+    }, 60000);
+
     function generateQRCode() {
         var rawText = document.getElementById('inputText').value;
         var proto = document.getElementById('protocolSelect').value;
