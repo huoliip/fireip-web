@@ -6,7 +6,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-18BWG0F5ZL');
     </script>
 
@@ -19,13 +18,12 @@
         body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
         .container { width: 100%; max-width: 800px; }
         .card, .tool-box, .brand-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
-        button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
-        #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
-        h2 { margin: 5px 0; font-size: 18px; text-align: center; }
         /* 新增检测框样式 */
         .detect-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 20px; margin-bottom: 20px; color: #1e40af; }
         .detect-item { font-size: 14px; margin-bottom: 8px; }
-        
+        button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
+        #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
+        h2 { margin: 5px 0; font-size: 18px; text-align: center; }
         .promo-card { border: 2px solid transparent !important; background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b) border-box; animation: gold-breath 3s infinite ease-in-out; margin-bottom: 10px; position: relative; }
         @keyframes gold-breath { 0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); } 50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); } }
         .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
@@ -54,7 +52,6 @@
         .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f8fafc; padding: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .recommend { color: #dc2626; font-weight: bold; font-size: 10px; margin-top: 2px; }
         .float-contact { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-size: 14px; box-shadow: 0 4px 12px rgba(37,99,235,0.4); z-index: 1000; text-decoration: none; font-weight: bold; }
-        /* FAQ 折叠样式 */
         .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
         .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; color: #333; cursor: pointer; }
         .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; background: #fff; line-height: 1.6; }
@@ -91,6 +88,7 @@
         <div id="qrcode"></div>
         <div id="socksURLContainer"></div>
     </div>
+    
     <div class="brand-box" id="contact-section">
         <div class="card promo-card">
             <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;"><span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)</div>
@@ -116,6 +114,7 @@
             <a class="btn-link" style="background: #059669;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode"><span class="wave-text">添加QQ</span></a>
         </div>
     </div>
+    
     <div class="card">
         <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 常见问题与技术指南 ✨</h3></div>
         
@@ -123,14 +122,17 @@
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q2: 为什么我的 IP 经常掉线？</button><div class="faq-answer">请首先检查设备网络稳定性，并确认代理协议配置是否正确。若使用动态 IP，请留意端口生存周期，或联系客服为您调整调度策略。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q3: 静态 IP 与动态 IP 该如何选择？</button><div class="faq-answer">静态 IP 提供固定位置，适合金融、社交账号长期维护；动态 IP 具备海量 IP 池，适合自动化数据采集、广告点击及大批量营销任务。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q4: 使用代理 IP 会被平台检测到吗？</button><div class="faq-answer">FireIP 采用高质量原生代理，IP 纯净度高，模拟真实全球用户行为。通过合理的浏览器指纹配置，可有效规避各平台检测机制。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q5: 如何获取专属的技术支持？</button><div class="faq-answer">点击页面底部的 TG 客服或微信链接，我们提供一对一技术调试，协助您快速适配各类海外业务场景。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q6: 你们的 IP 池覆盖哪些国家？</button><div class="faq-answer">我们拥有覆盖全球 190+ 国家的原生 IP 资源，支持精准到城市的地理位置定位，满足您全球化业务的差异化需求。</div></div>
         
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q5: 为什么挂了代理还会被封？</button><div class="faq-answer">常见原因是 WebRTC 协议泄露了您的真实本地 IP。请务必使用上方“环境体检”功能检查，若 WebRTC 显示您的真实 IP，说明代理配置未生效，请清理缓存并重连。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q6: TikTok 零播放怎么解决？</button><div class="faq-answer">通常是环境关联或 IP 质量差导致的。建议更换 FireIP 原生代理，配合指纹浏览器彻底清理缓存环境，通常 24 小时内即可恢复正常。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q7: 为什么挂了代理还是被封号？</button><div class="faq-answer">除 IP 外，浏览器指纹（WebRTC, Canvas, 时区）也是重要因素。请务必使用上方“环境体检”确保 WebRTC 无泄露，并配合指纹浏览器使用。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q8: 什么是住宅原生 IP？</button><div class="faq-answer">原生 IP 指由真实 ISP 分配的家庭宽带段，被平台标记为真实用户的概率极高，是长期运营高权重账号的首选。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q9: 链式代理有什么好处？</button><div class="faq-answer">通过多层转发，链式代理可以更好地隐藏本地网络特征，提高隐私安全性，是规避高强度网络风控的进阶策略。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q10: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟不等）。建议在工具箱中及时更新配置，以确保 IP 处于活跃状态。</div></div>
     </div>
 </div>
 <a href="#contact-section" class="float-contact">💬 客服</a>
 <script>
-    // 检测脚本
     async function getIP() { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); document.getElementById('pub-ip').innerText = data.ip; }
     function checkWebRTC() {
         const rtc = new RTCPeerConnection({iceServers:[{urls: "stun:stun.l.google.com:19302"}]});
@@ -139,8 +141,8 @@
         rtc.onicecandidate = (ice) => {
             if (!ice || !ice.candidate) return;
             const ip = /([0-9]{1,3}(\.[0-9]{1,3}){3})/.exec(ice.candidate.candidate);
-            if(ip) document.getElementById('webrtc-status').innerText = "【存在隐患】检测到本地 IP: " + ip[1];
-            else document.getElementById('webrtc-status').innerText = "【安全】未检测到 WebRTC 泄露";
+            if(ip) document.getElementById('webrtc-status').innerText = "【存在隐患】检测到地址: " + ip[1];
+            else document.getElementById('webrtc-status').innerText = "【安全】无 WebRTC 泄露";
         };
     }
     getIP(); checkWebRTC();
