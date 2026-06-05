@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-18BWG0F5ZL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -9,84 +8,116 @@
       gtag('js', new Date());
       gtag('config', 'G-18BWG0F5ZL');
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FireIP - 环境检测与代理服务</title>
+    <title>FireIP - 优质代理服务与环境检测</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root { --primary: #2563eb; --accent: #10b981; --bg: #f8fafc; }
         body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
         .container { width: 100%; max-width: 800px; }
         .card, .tool-box, .brand-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
+        /* 新增检测框样式 */
+        .detect-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 15px; margin-bottom: 20px; color: #1e40af; font-size: 14px; }
+        .detect-item { margin-bottom: 5px; }
+        
         button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
+        .promo-card { border: 2px solid transparent !important; background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b) border-box; animation: gold-breath 3s infinite ease-in-out; margin-bottom: 10px; position: relative; }
+        @keyframes gold-breath { 0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); } 50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); } }
+        .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
+        .highlight-orange { color: #d97706; font-weight: bold; font-size: 1.1em; }
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
         .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; font-size: 13px; }
+        @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+        .wave-text { display: inline-block; animation: pop 2.5s infinite ease-in-out; }
         .trust-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 5px 0 10px 0; }
         .tag { font-size: 10px; background: #f1f5f9; padding: 3px 7px; border-radius: 6px; color: #475569; }
-        textarea { width: 100%; height: 100px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; }
+        .tool-box { width: 100%; }
+        textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-size: 14px; color: #333; }
+        .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; }
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
-        /* 新增检测模块样式 */
-        .detect-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
-        .detect-item { font-size: 14px; margin-bottom: 8px; color: #1e40af; }
-        #webrtc-status { font-weight: bold; }
-        /* 其他样式保持不变 */
+        #qrcode { display:flex; justify-content:center; margin-top:15px; }
+        #socksURLContainer { margin-top: 15px; word-break: break-all; color: #333; font-size: 13px; line-height: 1.4; text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
+        .feature-item { padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11px; text-align: center; }
+        .feature-item b { display: block; color: var(--primary); font-size: 12px; margin-bottom: 2px; }
         .brand-box { border: 1px solid #e2e8f0; background: #ffffff; }
         .brand-title { text-align: center; font-weight: bold; color: #1e293b; margin-bottom: 5px; font-size: 16px; }
         .brand-subtitle { text-align: center; color: #64748b; font-size: 12px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
         .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
         .brand-item { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 11px; color: #475569; text-decoration: none; }
-        .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; }
-        .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; }
-        .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; cursor: pointer; }
-        .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; line-height: 1.6; }
-        .float-contact { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-size: 14px; z-index: 1000; text-decoration: none; font-weight: bold; }
+        .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f8fafc; padding: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .recommend { color: #dc2626; font-weight: bold; font-size: 10px; margin-top: 2px; }
+        .float-contact { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-size: 14px; box-shadow: 0 4px 12px rgba(37,99,235,0.4); z-index: 1000; text-decoration: none; font-weight: bold; }
+        .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+        .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; color: #333; cursor: pointer; }
+        .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; background: #fff; line-height: 1.6; }
+        @media (max-width: 480px) { .brand-grid { gap: 10px; } .brand-item { font-size: 9px; } .brand-item img { width: 28px; height: 28px; } }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- 原有头部内容 -->
     <div class="card">
         <img id="logo" src="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
-        <h2><span class="status-dot"></span>FireIP 环境安全中心</h2>
-        <div class="trust-tags"><span class="tag">✓ 环境检测</span><span class="tag">✓ 防泄漏</span><span class="tag">✓ 账号养护</span></div>
+        <h2><span class="status-dot"></span>FireIP 火力海外代理</h2>
+        <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 5px;">专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。</div>
+        <div class="trust-tags"><span class="tag">✓ 环境安全</span><span class="tag">✓ 跨境电商</span><span class="tag">✓ 市场调研</span><span class="tag">✓ 自动化</span></div>
+        <a class="btn-link" href="https://huo.onip.cc/">点击进站/购买静态</a>
     </div>
 
-    <!-- 1. 新增检测工具模块 -->
-    <div class="detect-box">
+    <div class="card detect-box">
         <div style="font-weight:bold; margin-bottom: 10px; color: #1e3a8a;">🔍 环境健康实时体检</div>
         <div class="detect-item">当前公网 IP: <span id="pub-ip">检测中...</span></div>
         <div class="detect-item">WebRTC 泄露状态: <span id="webrtc-status">检测中...</span></div>
-        <div style="font-size: 11px; color: #60a5fa;">* 若 WebRTC 显示您的真实本地 IP，说明代理配置未生效，存在封号风险！</div>
+        <div style="font-size: 11px; color: #60a5fa; margin-top: 5px;">* 如 WebRTC 显示真实本地 IP，说明代理配置未生效，存在封号风险！</div>
     </div>
 
-    <!-- 2. 修复工具引导 -->
     <div class="tool-box">
-        <div style="font-weight:bold; margin-bottom: 10px;">🛠️ 检测到环境异常？一键生成配置：</div>
         <textarea id="inputText" placeholder="格式: 地址:端口:账号:密码 (每一行一个IP)"></textarea>
-        <button onclick="generateQRCode()">生成 SOCKS5 配置二维码</button>
-        <div id="qrcode" style="display:flex; justify-content:center; margin-top:15px;"></div>
-        <div id="socksURLContainer" style="word-break: break-all; margin-top:10px; font-size: 12px;"></div>
+        <select id="protocolSelect" class="protocol-select"><option value="socks://">SOCKS5</option><option value="http://">HTTP</option></select>
+        <button onclick="generateQRCode()">生成专属二维码</button>
+        <div id="qrcode"></div>
+        <div id="socksURLContainer"></div>
     </div>
 
-    <!-- 常见问题区（扩充） -->
+    <div class="brand-box" id="contact-section">
+        <div class="card promo-card">
+            <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;"><span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)</div>
+            <div style="font-size: 13px; color: #92400e; text-align: center;">单次购买动态流量 <b>1T 以上</b>，额外<span class="highlight-red">加赠 100G</span>。</div>
+            <div style="font-size: 11px; color: #b45309; text-align: center; margin-top: 8px;">今日剩余名额：<span id="stock-num" style="font-weight:bold; color:red;">10</span> 个</div>
+        </div>
+        <div class="brand-title">官方授权【动态】代理品牌</div>
+        <div class="brand-grid">
+            <a href="https://ipweb.cc" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=ipweb.cc">ipweb<span class="recommend">(推荐)</span></a>
+            <a href="https://kookeey.com" class="brand-item"><img src="https://assets.kookeey.com/logo.png" onerror="this.src='image_181.png';">kookeey<span class="recommend">(推荐)</span></a>
+            <a href="https://711proxy.com" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=711proxy.com">711proxy<span class="recommend">(推荐)</span></a>
+            <a href="https://cliproxy.com" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=cliproxy.com">cliproxy<span class="recommend">(推荐)</span></a>
+        </div>
+        <div class="contact-grid" style="padding: 20px;">
+            <a class="btn-link" href="https://t.me/huoliIP" target="_blank"><span class="wave-text">联系TG客服</span></a>
+            <a class="btn-link" style="background: #10b981;" onclick="alert('请手动添加微信：a15016410566')"><span class="wave-text">获取微信</span></a>
+        </div>
+    </div>
+
     <div class="card">
-        <h3 style="text-align: center;">✨ 技术答疑与运营指南 ✨</h3>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q1: 为什么我的 IP 挂了代理还是会封号？</button><div class="faq-answer">最常见原因是 WebRTC 泄露，真实国内 IP 被平台识别。请使用本页上方工具进行环境检测。若发现 WebRTC IP 与代理 IP 不符，必须关闭浏览器重连代理。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q2: 什么是真正的原生 IP？如何判断？</button><div class="faq-answer">原生 IP 是指 IP 注册地与机房所在地一致，且属于 ISP 住宅网络段。平台会对非原生 IP 进行降权处理。FireIP 提供 100% 原生纯净 IP，助力账号安全。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q3: 指纹浏览器是否一定要配合代理？</button><div class="faq-answer">是的。指纹浏览器解决了“设备特征”问题，但代理解决了“网络出口”问题。两者缺一不可，只有结合使用，才能达到物理机隔离的防关联效果。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q4: TikTok 零播放怎么解决？</button><div class="faq-answer">通常是环境关联或 IP 质量差导致的。建议更换 FireIP 原生代理，并配合指纹浏览器彻底清理缓存环境，通常 24 小时内即可恢复正常。</div></div>
+        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 技术答疑与防关联指南 ✨</h3></div>
+        
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q1: 为什么挂了代理还会被封？</button><div class="faq-answer">常见原因是 WebRTC 协议泄露了您的真实本地 IP。请务必使用上方“环境体检”功能检查，若 WebRTC 显示您的真实 IP，说明代理配置未生效，请清理缓存并重连。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q2: 指纹浏览器+代理是必须的吗？</button><div class="faq-answer">是的。代理解决的是网络出口 IP 的纯净度，指纹浏览器解决的是设备硬件参数关联。二者结合是批量养号的最稳方案，缺一不可。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q3: 如何区分优质原生 IP？</button><div class="faq-answer">原生 IP 是指 IP 归属地与业务地区高度一致，且属于 ISP 住宅网络段。使用原生 IP 可显著提高账号权重，减少平台风控判定。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q4: TikTok 零播放怎么解决？</button><div class="faq-answer">通常是环境不纯净（如IP被污染或硬件指纹冲突）。建议更换 FireIP 原生代理，结合指纹浏览器配置，并使用我们的检测工具排除泄露风险。</div></div>
     </div>
 </div>
 
+<a href="#contact-section" class="float-contact">💬 客服</a>
+
 <script>
-    // WebRTC 检测脚本
-    async function getIP() {
-        const res = await fetch('https://api.ipify.org?format=json');
-        const data = await res.json();
-        document.getElementById('pub-ip').innerText = data.ip;
-    }
+    // 检测逻辑
+    async function getIP() { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); document.getElementById('pub-ip').innerText = data.ip; }
     function checkWebRTC() {
         const rtc = new RTCPeerConnection({iceServers:[{urls: "stun:stun.l.google.com:19302"}]});
         rtc.createDataChannel('');
@@ -100,16 +131,32 @@
     }
     getIP(); checkWebRTC();
 
+    // 原有逻辑
+    function calculateStock() {
+        let now = new Date();
+        let totalMinutesToday = now.getHours() * 60 + now.getMinutes();
+        let daySeed = now.getFullYear() + now.getMonth() + now.getDate();
+        let randomOffset = (daySeed % 50) - 25;
+        let consumed = Math.floor(totalMinutesToday / (144 + randomOffset));
+        let stock = 10 - consumed;
+        return stock < 0 ? 0 : stock;
+    }
+    function syncStock() { document.getElementById('stock-num').innerText = calculateStock(); }
+    syncStock(); setInterval(syncStock, 300000); 
+
     function generateQRCode() {
         var rawText = document.getElementById('inputText').value;
+        var proto = document.getElementById('protocolSelect').value;
         var lines = rawText.split('\n').filter(line => line.trim() !== "");
+        var container = document.getElementById('socksURLContainer');
         var qrcodeDiv = document.getElementById('qrcode');
-        qrcodeDiv.innerHTML = '';
+        container.innerHTML = ''; qrcodeDiv.innerHTML = '';
         lines.forEach(function(line) {
             var p = line.split(':');
             if(p.length >= 4) {
-                var url = "socks5://" + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1];
-                new QRCode(qrcodeDiv, { text: url, width: 150, height: 150 });
+                var url = proto === "http://" ? "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1] : proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];
+                var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
+                if (container.children.length === 1) new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });
             }
         });
     }
