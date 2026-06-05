@@ -39,6 +39,10 @@
         @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         .wave-text { display: inline-block; animation: pop 2.5s infinite ease-in-out; }
         
+        /* 信任背书标签 */
+        .trust-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 5px 0 10px 0; }
+        .tag { font-size: 10px; background: #f1f5f9; padding: 3px 7px; border-radius: 6px; color: #475569; }
+
         .tool-box { width: 100%; }
         textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333; }
         .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; }
@@ -70,7 +74,12 @@
     <div class="card">
         <img id="logo" src="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
         <h2><span class="status-dot"></span>FireIP 火力海外代理</h2>
-        <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 15px;">专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。</div>
+        <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 5px;">专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。</div>
+        
+        <div class="trust-tags">
+            <span class="tag">✓ 环境安全</span><span class="tag">✓ 跨境电商</span><span class="tag">✓ 市场调研</span><span class="tag">✓ 自动化</span>
+        </div>
+        
         <a class="btn-link" href="https://huo.onip.cc/">点击进站/购买静态</a>
         <div class="features-inline">
             <div class="feature-item"><b>独享原生IP</b>超低使用率更纯净</div>
@@ -91,7 +100,7 @@
         <div id="socksURLContainer"></div>
     </div>
     
-    <div class="brand-box">
+    <div class="brand-box" id="contact-section">
         <div class="card promo-card">
             <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;">
                 <span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)
@@ -135,7 +144,7 @@
     <div class="card">
         <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
             <h3 style="font-size: 20px; color: #1e293b; margin: 0; display: inline-flex; align-items: center; gap: 8px;">
-                💡 选购专业指南与建议 💡
+                ✨ 选购专业指南与建议 ✨
             </h3>
         </div>
         <ul style="font-size: 13px; text-align: left; color: #475569; padding-left: 20px; margin-bottom: 0px; line-height: 1.6; font-family: Arial, Helvetica, sans-serif;">
@@ -146,7 +155,7 @@
     </div>
 </div>
 
-<a href="https://t.me/huoliIP" class="float-contact" target="_blank">💬 客服</a>
+<a href="#contact-section" class="float-contact">💬 客服</a>
 
 <script>
     function calculateStock() {
