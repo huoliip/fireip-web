@@ -6,25 +6,26 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-18BWG0F5ZL');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FireIP - 优质代理服务与环境检测</title>
+    <title>FireIP - 优质代理服务</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root { --primary: #2563eb; --accent: #10b981; --bg: #f8fafc; }
         body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
         .container { width: 100%; max-width: 800px; }
         .card, .tool-box, .brand-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
-        /* 新增检测框样式 */
-        .detect-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 15px; margin-bottom: 20px; color: #1e40af; font-size: 14px; }
-        .detect-item { margin-bottom: 5px; }
-        
         button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
+        /* 新增检测框样式 */
+        .detect-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 20px; margin-bottom: 20px; color: #1e40af; }
+        .detect-item { font-size: 14px; margin-bottom: 8px; }
+        
         .promo-card { border: 2px solid transparent !important; background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b) border-box; animation: gold-breath 3s infinite ease-in-out; margin-bottom: 10px; position: relative; }
         @keyframes gold-breath { 0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); } 50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); } }
         .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
@@ -53,6 +54,7 @@
         .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f8fafc; padding: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .recommend { color: #dc2626; font-weight: bold; font-size: 10px; margin-top: 2px; }
         .float-contact { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-size: 14px; box-shadow: 0 4px 12px rgba(37,99,235,0.4); z-index: 1000; text-decoration: none; font-weight: bold; }
+        /* FAQ 折叠样式 */
         .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
         .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; color: #333; cursor: pointer; }
         .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; background: #fff; line-height: 1.6; }
@@ -67,6 +69,12 @@
         <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 5px;">专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。</div>
         <div class="trust-tags"><span class="tag">✓ 环境安全</span><span class="tag">✓ 跨境电商</span><span class="tag">✓ 市场调研</span><span class="tag">✓ 自动化</span></div>
         <a class="btn-link" href="https://huo.onip.cc/">点击进站/购买静态</a>
+        <div class="features-inline">
+            <div class="feature-item"><b>独享原生IP</b>超低使用率更纯净</div>
+            <div class="feature-item"><b>拒绝跳跃</b>独占带宽更稳定</div>
+            <div class="feature-item"><b>全球覆盖</b>190+国家精准定位</div>
+            <div class="feature-item"><b>全天候响应</b>一对一技术支持</div>
+        </div>
     </div>
 
     <div class="card detect-box">
@@ -83,7 +91,6 @@
         <div id="qrcode"></div>
         <div id="socksURLContainer"></div>
     </div>
-
     <div class="brand-box" id="contact-section">
         <div class="card promo-card">
             <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;"><span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)</div>
@@ -91,32 +98,39 @@
             <div style="font-size: 11px; color: #b45309; text-align: center; margin-top: 8px;">今日剩余名额：<span id="stock-num" style="font-weight:bold; color:red;">10</span> 个</div>
         </div>
         <div class="brand-title">官方授权【动态】代理品牌</div>
+        <div class="brand-subtitle">我们已对下述全球主流代理平台进行深度压力测试，FireIP 用户可享受专属优先调度与技术适配。</div>
         <div class="brand-grid">
             <a href="https://ipweb.cc" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=ipweb.cc">ipweb<span class="recommend">(推荐)</span></a>
             <a href="https://kookeey.com" class="brand-item"><img src="https://assets.kookeey.com/logo.png" onerror="this.src='image_181.png';">kookeey<span class="recommend">(推荐)</span></a>
             <a href="https://711proxy.com" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=711proxy.com">711proxy<span class="recommend">(推荐)</span></a>
             <a href="https://cliproxy.com" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=cliproxy.com">cliproxy<span class="recommend">(推荐)</span></a>
+            <a href="https://b2proxy.com" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=b2proxy.com">b2proxy<span class="recommend">(推荐)</span></a>
+            <a href="https://lokiproxy.com" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=lokiproxy.com">lokiproxy<span class="recommend">(推荐)</span></a>
+            <a href="https://iprocket.io" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=iprocket.io">iprocket<span class="recommend">(推荐)</span></a>
+            <a href="https://ipwo.net" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=ipwo.net">ipwo<span class="recommend">(推荐)</span></a>
         </div>
         <div class="contact-grid" style="padding: 20px;">
             <a class="btn-link" href="https://t.me/huoliIP" target="_blank"><span class="wave-text">联系TG客服</span></a>
             <a class="btn-link" style="background: #10b981;" onclick="alert('请手动添加微信：a15016410566')"><span class="wave-text">获取微信</span></a>
+            <a class="btn-link" href="https://t.me/huoli_proxy" target="_blank"><span class="wave-text">进入TG频道</span></a>
+            <a class="btn-link" style="background: #059669;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode"><span class="wave-text">添加QQ</span></a>
         </div>
     </div>
-
     <div class="card">
-        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 技术答疑与防关联指南 ✨</h3></div>
+        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 常见问题与技术指南 ✨</h3></div>
         
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q1: 为什么挂了代理还会被封？</button><div class="faq-answer">常见原因是 WebRTC 协议泄露了您的真实本地 IP。请务必使用上方“环境体检”功能检查，若 WebRTC 显示您的真实 IP，说明代理配置未生效，请清理缓存并重连。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q2: 指纹浏览器+代理是必须的吗？</button><div class="faq-answer">是的。代理解决的是网络出口 IP 的纯净度，指纹浏览器解决的是设备硬件参数关联。二者结合是批量养号的最稳方案，缺一不可。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q3: 如何区分优质原生 IP？</button><div class="faq-answer">原生 IP 是指 IP 归属地与业务地区高度一致，且属于 ISP 住宅网络段。使用原生 IP 可显著提高账号权重，减少平台风控判定。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q4: TikTok 零播放怎么解决？</button><div class="faq-answer">通常是环境不纯净（如IP被污染或硬件指纹冲突）。建议更换 FireIP 原生代理，结合指纹浏览器配置，并使用我们的检测工具排除泄露风险。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q1: 如何有效进行电商防关联？</button><div class="faq-answer">使用 FireIP 独享静态原生 IP，保持固定归属地，配合浏览器指纹插件，可极大程度降低账号封禁风险，确保运营环境稳定。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q2: 为什么我的 IP 经常掉线？</button><div class="faq-answer">请首先检查设备网络稳定性，并确认代理协议配置是否正确。若使用动态 IP，请留意端口生存周期，或联系客服为您调整调度策略。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q3: 静态 IP 与动态 IP 该如何选择？</button><div class="faq-answer">静态 IP 提供固定位置，适合金融、社交账号长期维护；动态 IP 具备海量 IP 池，适合自动化数据采集、广告点击及大批量营销任务。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q4: 使用代理 IP 会被平台检测到吗？</button><div class="faq-answer">FireIP 采用高质量原生代理，IP 纯净度高，模拟真实全球用户行为。通过合理的浏览器指纹配置，可有效规避各平台检测机制。</div></div>
+        
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q5: 为什么挂了代理还会被封？</button><div class="faq-answer">常见原因是 WebRTC 协议泄露了您的真实本地 IP。请务必使用上方“环境体检”功能检查，若 WebRTC 显示您的真实 IP，说明代理配置未生效，请清理缓存并重连。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q6: TikTok 零播放怎么解决？</button><div class="faq-answer">通常是环境关联或 IP 质量差导致的。建议更换 FireIP 原生代理，配合指纹浏览器彻底清理缓存环境，通常 24 小时内即可恢复正常。</div></div>
     </div>
 </div>
-
 <a href="#contact-section" class="float-contact">💬 客服</a>
-
 <script>
-    // 检测逻辑
+    // 检测脚本
     async function getIP() { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); document.getElementById('pub-ip').innerText = data.ip; }
     function checkWebRTC() {
         const rtc = new RTCPeerConnection({iceServers:[{urls: "stun:stun.l.google.com:19302"}]});
@@ -131,7 +145,6 @@
     }
     getIP(); checkWebRTC();
 
-    // 原有逻辑
     function calculateStock() {
         let now = new Date();
         let totalMinutesToday = now.getHours() * 60 + now.getMinutes();
@@ -143,7 +156,6 @@
     }
     function syncStock() { document.getElementById('stock-num').innerText = calculateStock(); }
     syncStock(); setInterval(syncStock, 300000); 
-
     function generateQRCode() {
         var rawText = document.getElementById('inputText').value;
         var proto = document.getElementById('protocolSelect').value;
