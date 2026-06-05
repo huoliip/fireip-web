@@ -18,18 +18,13 @@
         @keyframes breath { 0% { box-shadow: 0 0 5px #f59e0b; } 50% { box-shadow: 0 0 15px #f59e0b; } 100% { box-shadow: 0 0 5px #f59e0b; } }
         .promo-card { border: 2px solid #f59e0b !important; background: #fffbeb; animation: breath 2s infinite ease-in-out; margin-bottom: 10px; }
         
-        /* 优化：底部固定，火焰上部柔和摇曳 */
-        @keyframes gentle-flame {
-            0% { transform: rotate(0deg) skewX(0deg); }
-            33% { transform: rotate(-5deg) skewX(3deg); }
-            66% { transform: rotate(5deg) skewX(-3deg); }
-            100% { transform: rotate(0deg) skewX(0deg); }
-        }
-        .fire-icon { 
-            display: inline-block; 
-            animation: gentle-flame 2s infinite ease-in-out; 
-            transform-origin: bottom center; /* 核心：底部固定不动 */
-            display: inline-block;
+        /* CSS 纯代码绘制：真实篝火效果 */
+        .fire-container { display: inline-block; position: relative; width: 20px; height: 25px; margin: 0 5px; vertical-align: middle; }
+        .flame { position: absolute; bottom: 0; left: 50%; width: 100%; height: 100%; transform-origin: bottom center; animation: flicker 2s infinite ease-in-out; background: linear-gradient(to top, #ff9800, #ff5722 70%, transparent); border-radius: 50% 50% 20% 20%; filter: blur(1px); }
+        @keyframes flicker {
+            0%, 100% { transform: scale(1, 1); opacity: 0.8; }
+            50% { transform: scale(1.1, 1.2) skewX(2deg); opacity: 1; }
+            75% { transform: scale(0.9, 1.1) skewX(-2deg); opacity: 0.9; }
         }
 
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
@@ -89,7 +84,7 @@
     <div class="brand-box">
         <div class="card promo-card">
             <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;">
-                <span class="fire-icon">🔥</span> 限时福利 (仅限每天前 10 位购入者) <span class="fire-icon">🔥</span>
+                <div class="fire-container"><div class="flame"></div></div> 限时福利 (仅限每天前 10 位购入者) <div class="fire-container"><div class="flame"></div></div>
             </div>
             <div style="font-size: 13px; color: #92400e; text-align: center;">单次购买动态流量 <b>1T 以上</b>，额外加赠 <b>100G</b>。</div>
         </div>
