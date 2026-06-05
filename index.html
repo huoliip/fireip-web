@@ -7,10 +7,13 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root { --primary: #2563eb; --accent: #10b981; --bg: #f8fafc; }
-        body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
+        body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; padding-bottom: 80px; }
         .container { width: 100%; max-width: 800px; }
         .card, .tool-box, .brand-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
         
+        /* 按钮按压动效 */
+        button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
+
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
         
@@ -42,11 +45,15 @@
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
         #qrcode { display:flex; justify-content:center; margin-top:15px; }
         #socksURLContainer { margin-top: 15px; word-break: break-all; color: #333; font-size: 13px; line-height: 1.4; text-align: center; font-family: Arial, Helvetica, sans-serif; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
-        .feature-item { padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11px; text-align: center; }
-        .feature-item b { display: block; color: var(--primary); font-size: 12px; margin-bottom: 2px; }
         
+        /* 信任背书标签 */
+        .trust-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 15px 0; }
+        .tag { font-size: 10px; background: #f1f5f9; padding: 4px 8px; border-radius: 6px; color: #475569; }
+
+        /* 选购对比 */
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; font-size: 12px; }
+        .compare-item { padding: 10px; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+
         .brand-box { border: 1px solid #e2e8f0; background: #ffffff; }
         .brand-title { text-align: center; font-weight: bold; color: #1e293b; margin-bottom: 5px; font-size: 16px; }
         .brand-subtitle { text-align: center; color: #64748b; font-size: 12px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
@@ -54,6 +61,10 @@
         .brand-item { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 11px; color: #475569; text-decoration: none; }
         .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f8fafc; padding: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .recommend { color: #dc2626; font-weight: bold; font-size: 10px; margin-top: 2px; }
+        
+        /* 底部固定客服 */
+        .float-contact { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-size: 14px; box-shadow: 0 4px 12px rgba(37,99,235,0.4); z-index: 1000; text-decoration: none; font-weight: bold; }
+        
         @media (max-width: 480px) { .brand-grid { gap: 10px; } .brand-item { font-size: 9px; } .brand-item img { width: 28px; height: 28px; } }
     </style>
 </head>
@@ -63,14 +74,13 @@
     <div class="card">
         <img id="logo" src="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
         <h2><span class="status-dot"></span>FireIP 火力海外代理</h2>
-        <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 15px;">专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。</div>
-        <a class="btn-link" href="https://huo.onip.cc/">点击进站/购买静态</a>
-        <div class="features-inline">
-            <div class="feature-item"><b>独享原生IP</b>超低使用率更纯净</div>
-            <div class="feature-item"><b>拒绝跳跃</b>独占带宽更稳定</div>
-            <div class="feature-item"><b>全球覆盖</b>190+国家精准定位</div>
-            <div class="feature-item"><b>全天候响应</b>一对一技术支持</div>
+        <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 10px;">专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。</div>
+        
+        <div class="trust-tags">
+            <span class="tag">✓ 浏览器环境安全</span><span class="tag">✓ 跨境电商</span><span class="tag">✓ 市场调研</span><span class="tag">✓ 批量自动化</span>
         </div>
+        
+        <a class="btn-link" href="https://huo.onip.cc/">点击进站/购买静态</a>
     </div>
     
     <div class="tool-box">
@@ -108,62 +118,32 @@
             <a href="https://iprocket.io" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=iprocket.io">iprocket<span class="recommend">(推荐)</span></a>
             <a href="https://ipwo.net" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=ipwo.net">ipwo<span class="recommend">(推荐)</span></a>
         </div>
-        
-        <div class="contact-grid" style="padding: 20px;">
-            <a class="btn-link" href="https://t.me/huoliIP" target="_blank">
-                <span class="wave-text" style="animation-delay: 0s;">联</span><span class="wave-text" style="animation-delay: 0.2s;">系</span><span class="wave-text" style="animation-delay: 0.4s;">T</span><span class="wave-text" style="animation-delay: 0.6s;">G</span><span class="wave-text" style="animation-delay: 0.8s;">客</span><span class="wave-text" style="animation-delay: 1.0s;">服</span>
-            </a>
-            <a class="btn-link" style="background: #10b981;" onclick="alert('请手动添加微信：a15016410566')">
-                <span class="wave-text" style="animation-delay: 0s;">点</span><span class="wave-text" style="animation-delay: 0.2s;">击</span><span class="wave-text" style="animation-delay: 0.4s;">获</span><span class="wave-text" style="animation-delay: 0.6s;">取</span><span class="wave-text" style="animation-delay: 0.8s;">微</span><span class="wave-text" style="animation-delay: 1.0s;">信</span>
-            </a>
-            <a class="btn-link" href="https://t.me/huoli_proxy" target="_blank">
-                <span class="wave-text" style="animation-delay: 0s;">进</span><span class="wave-text" style="animation-delay: 0.2s;">入</span><span class="wave-text" style="animation-delay: 0.4s;">T</span><span class="wave-text" style="animation-delay: 0.6s;">G</span><span class="wave-text" style="animation-delay: 0.8s;">频</span><span class="wave-text" style="animation-delay: 1.0s;">道</span>
-            </a>
-            <a class="btn-link" style="background: #059669;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode">
-                <span class="wave-text" style="animation-delay: 0s;">跳</span><span class="wave-text" style="animation-delay: 0.2s;">转</span><span class="wave-text" style="animation-delay: 0.4s;">添</span><span class="wave-text" style="animation-delay: 0.6s;">加</span><span class="wave-text" style="animation-delay: 0.8s;">Q</span><span class="wave-text" style="animation-delay: 1.0s;">Q</span>
-            </a>
-        </div>
     </div>
     
     <div class="card">
-        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
-            <h3 style="font-size: 20px; color: #1e293b; margin: 0; display: inline-flex; align-items: center; gap: 8px;">
-                💡 选购专业指南与建议 💡
-            </h3>
+        <div style="text-align: center; font-weight: bold; color: #1e293b; margin-bottom: 10px;">选购专业对比</div>
+        <div class="compare-grid">
+            <div class="compare-item"><b>静态 IP：</b> 归属固定，纯净度极高，适合账号防关联、金融登录。</div>
+            <div class="compare-item"><b>动态 IP：</b> 自动切换，海量池，适合数据采集、自动化营销、广告分析。</div>
         </div>
-        <ul style="font-size: 13px; text-align: left; color: #475569; padding-left: 20px; margin-bottom: 0px; line-height: 1.6; font-family: Arial, Helvetica, sans-serif;">
-            <li><b>静态 IP (Static IP)：</b> 提供长期固定的归属地，IP 纯净度极高。主要用于<b>海外电商运营</b>防关联，确保账号环境高度稳定；同时也是<b>个人社交媒体、金融账户</b>长期登录的必备选择。</li>
-            <li><b>动态 IP (Rotating IP)：</b> 具备海量 IP 池，支持高频自动切换。是<b>大规模网页数据采集、舆情监测、广告竞价分析</b>的核心工具。</li>
-            <li><b>自动化营销/批量操作：</b> 结合脚本实现业务自动化。利用 IP 轮换优势，最大化模拟真实全球用户行为。</li>
-        </ul>
     </div>
 </div>
+
+<!-- 悬浮客服 -->
+<a href="https://t.me/huoliIP" class="float-contact" target="_blank">💬 联系客服</a>
+
 <script>
-    // 逻辑优化：基于当天时间的真实感名额消耗
     function calculateStock() {
         let now = new Date();
-        let hour = now.getHours();
-        let minute = now.getMinutes();
-        let totalMinutesToday = hour * 60 + minute;
-        
-        // 每天 1440 分钟，分配 10 个名额，平均 144 分钟减少一个
-        // 为保证不规则，引入基于日期的随机偏移量 (使用日期作为种子)
+        let totalMinutesToday = now.getHours() * 60 + now.getMinutes();
         let daySeed = now.getFullYear() + now.getMonth() + now.getDate();
-        let randomOffset = (daySeed % 50) - 25; // -25 到 +25 分钟的偏移
-        
+        let randomOffset = (daySeed % 50) - 25;
         let consumed = Math.floor(totalMinutesToday / (144 + randomOffset));
         let stock = 10 - consumed;
         return stock < 0 ? 0 : stock;
     }
-
-    function syncStock() {
-        let stockDisplay = document.getElementById('stock-num');
-        stockDisplay.innerText = calculateStock();
-    }
-
-    // 初始化运行，并每 5 分钟检查一次是否需要更新名额
-    syncStock();
-    setInterval(syncStock, 300000); 
+    document.getElementById('stock-num').innerText = calculateStock();
+    setInterval(() => { document.getElementById('stock-num').innerText = calculateStock(); }, 300000);
 
     function generateQRCode() {
         var rawText = document.getElementById('inputText').value;
@@ -171,24 +151,13 @@
         var lines = rawText.split('\n').filter(line => line.trim() !== "");
         var container = document.getElementById('socksURLContainer');
         var qrcodeDiv = document.getElementById('qrcode');
-        container.innerHTML = '';
-        qrcodeDiv.innerHTML = '';
+        container.innerHTML = ''; qrcodeDiv.innerHTML = '';
         lines.forEach(function(line) {
             var p = line.split(':');
             if(p.length >= 4) {
-                var url;
-                if (proto === "http://") {
-                    url = "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1];
-                } else {
-                    url = proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];
-                }
-                var div = document.createElement('div');
-                div.style.marginBottom = "8px";
-                div.textContent = url;
-                container.appendChild(div);
-                if (container.children.length === 1) {
-                    new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });
-                }
+                var url = proto === "http://" ? "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1] : proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];
+                var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
+                if (container.children.length === 1) new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });
             }
         });
     }
