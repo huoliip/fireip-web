@@ -7,30 +7,30 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root { --primary: #2563eb; --accent: #10b981; --bg: #f8fafc; }
-        /* 统一使用无衬线字体，类似 SOCKS5 的显示效果 */
+        /* 统一使用无衬线字体 */
         body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
         .container { width: 100%; max-width: 800px; }
         .card, .tool-box, .brand-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
         #logo { width: 80px; display: block; margin: 0 auto 10px; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
-        .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; }
+        .btn-link { display: block; background: #2563eb; color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; }
         .tool-box { width: 100%; }
         
-        /* 输入框已统一为无衬线字体 */
+        /* 输入框：已统一为无衬线字体 */
         textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333; }
         
         .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; }
-        button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        button { width: 100%; padding: 14px; background: #10b981; color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
         #qrcode { display:flex; justify-content:center; margin-top:15px; }
         
-        /* 下方生成结果区域已统一为无衬线字体 */
+        /* 生成结果链接：已统一为无衬线字体 */
         #socksURLContainer { margin-top: 15px; word-break: break-all; color: #333; font-size: 13px; line-height: 1.4; text-align: center; font-family: Arial, Helvetica, sans-serif; }
         
         .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
         .feature-item { padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11px; text-align: center; }
-        .feature-item b { display: block; color: var(--primary); font-size: 12px; margin-bottom: 2px; }
-        .brand-box { border: 2px solid var(--primary); }
-        .brand-title { text-align: center; font-weight: bold; color: var(--primary); margin-bottom: 10px; }
+        .feature-item b { display: block; color: #2563eb; font-size: 12px; margin-bottom: 2px; }
+        .brand-box { border: 2px solid #2563eb; }
+        .brand-title { text-align: center; font-weight: bold; color: #2563eb; margin-bottom: 10px; }
         .price-tag { text-align: center; color: #dc2626; font-weight: bold; font-size: 14px; margin-bottom: 15px; background: #fee2e2; padding: 5px; border-radius: 5px; }
         .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
         .brand-item { font-size: 11px; color: #475569; background: #f1f5f9; padding: 10px 2px; border-radius: 6px; text-align: center; }
@@ -66,9 +66,10 @@
     </div>
     <div class="card">
         <h3 style="font-size: 16px; margin-bottom: 10px; text-align: center;">💡 选购建议 & 联系我们</h3>
-        <ul style="font-size: 13px; text-align: left; color: #475569; padding-left: 20px; margin-bottom: 15px;">
-            <li><b>静态 IP：</b> 适合长期登录、账号保护、电商运营。</li>
-            <li><b>动态 IP：</b> 适合网页采集、流量测试、频繁切换需求。</li>
+        <ul style="font-size: 13px; text-align: left; color: #475569; padding-left: 20px; margin-bottom: 15px; font-family: Arial, Helvetica, sans-serif;">
+            <li><b>静态 IP (Static IP)：</b> 提供长期固定的归属地，IP 纯净度极高。主要用于<b>海外电商运营</b>（如亚马逊、Etsy、eBay）防关联，确保账号环境高度稳定；同时也是<b>个人社交媒体、金融账户</b>长期登录的必备选择，有效防止频繁异地登录导致的账户风控及封禁。</li>
+            <li><b>动态 IP (Rotating IP)：</b> 具备海量 IP 池，支持高频自动切换。是<b>大规模网页数据采集、舆情监测、广告竞价分析</b>的核心工具，通过分布式 IP 轮换，轻松突破目标网站的反爬限制与频率阈值，确保采集任务不中断。</li>
+            <li><b>自动化营销/批量操作：</b> 结合脚本实现业务自动化。利用 IP 轮换优势，进行<b>社交媒体批量推广、评论互动、流量测压</b>等场景，最大化模拟真实全球用户行为，提升营销触达率与账号活跃度。</li>
         </ul>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
             <a class="btn-link" style="background: #059669; font-size: 13px;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode">跳转添加QQ</a>
