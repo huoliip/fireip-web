@@ -10,50 +10,29 @@
         body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
         .container { width: 100%; max-width: 800px; }
         .card, .tool-box, .brand-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
-        
-        /* 按钮按压动效 */
         button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
-
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
-        
-        .promo-card { 
-            border: 2px solid transparent !important;
-            background: linear-gradient(white, white) padding-box, 
-                        linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b) border-box;
-            animation: gold-breath 3s infinite ease-in-out;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        @keyframes gold-breath {
-            0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
-            50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); }
-        }
-
+        .promo-card { border: 2px solid transparent !important; background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b) border-box; animation: gold-breath 3s infinite ease-in-out; margin-bottom: 10px; position: relative; }
+        @keyframes gold-breath { 0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); } 50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); } }
         .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
         .highlight-orange { color: #d97706; font-weight: bold; font-size: 1.1em; }
-
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
         .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; font-size: 13px; }
-        
         @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         .wave-text { display: inline-block; animation: pop 2.5s infinite ease-in-out; }
-        
-        /* 信任背书标签 */
         .trust-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 5px 0 10px 0; }
         .tag { font-size: 10px; background: #f1f5f9; padding: 3px 7px; border-radius: 6px; color: #475569; }
-
         .tool-box { width: 100%; }
-        textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333; }
-        .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; }
+        textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-size: 14px; color: #333; }
+        .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; }
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
         #qrcode { display:flex; justify-content:center; margin-top:15px; }
-        #socksURLContainer { margin-top: 15px; word-break: break-all; color: #333; font-size: 13px; line-height: 1.4; text-align: center; font-family: Arial, Helvetica, sans-serif; }
+        #socksURLContainer { margin-top: 15px; word-break: break-all; color: #333; font-size: 13px; line-height: 1.4; text-align: center; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
         .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
         .feature-item { padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11px; text-align: center; }
         .feature-item b { display: block; color: var(--primary); font-size: 12px; margin-bottom: 2px; }
-        
         .brand-box { border: 1px solid #e2e8f0; background: #ffffff; }
         .brand-title { text-align: center; font-weight: bold; color: #1e293b; margin-bottom: 5px; font-size: 16px; }
         .brand-subtitle { text-align: center; color: #64748b; font-size: 12px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
@@ -61,25 +40,21 @@
         .brand-item { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 11px; color: #475569; text-decoration: none; }
         .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f8fafc; padding: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .recommend { color: #dc2626; font-weight: bold; font-size: 10px; margin-top: 2px; }
-        
-        /* 悬浮客服 */
         .float-contact { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-size: 14px; box-shadow: 0 4px 12px rgba(37,99,235,0.4); z-index: 1000; text-decoration: none; font-weight: bold; }
-        
+        /* FAQ 折叠样式 */
+        .faq-item { margin-bottom: 10px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+        .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; color: #333; cursor: pointer; }
+        .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; background: #fff; }
         @media (max-width: 480px) { .brand-grid { gap: 10px; } .brand-item { font-size: 9px; } .brand-item img { width: 28px; height: 28px; } }
     </style>
 </head>
 <body>
 <div class="container">
-    
     <div class="card">
         <img id="logo" src="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
         <h2><span class="status-dot"></span>FireIP 火力海外代理</h2>
         <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 5px;">专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。</div>
-        
-        <div class="trust-tags">
-            <span class="tag">✓ 环境安全</span><span class="tag">✓ 跨境电商</span><span class="tag">✓ 市场调研</span><span class="tag">✓ 自动化</span>
-        </div>
-        
+        <div class="trust-tags"><span class="tag">✓ 环境安全</span><span class="tag">✓ 跨境电商</span><span class="tag">✓ 市场调研</span><span class="tag">✓ 自动化</span></div>
         <a class="btn-link" href="https://huo.onip.cc/">点击进站/购买静态</a>
         <div class="features-inline">
             <div class="feature-item"><b>独享原生IP</b>超低使用率更纯净</div>
@@ -88,29 +63,18 @@
             <div class="feature-item"><b>全天候响应</b>一对一技术支持</div>
         </div>
     </div>
-    
     <div class="tool-box">
         <textarea id="inputText" placeholder="格式: 地址:端口:账号:密码 (每一行一个IP)"></textarea>
-        <select id="protocolSelect" class="protocol-select">
-            <option value="socks://">SOCKS5</option>
-            <option value="http://">HTTP</option>
-        </select>
+        <select id="protocolSelect" class="protocol-select"><option value="socks://">SOCKS5</option><option value="http://">HTTP</option></select>
         <button onclick="generateQRCode()">生成专属二维码</button>
         <div id="qrcode"></div>
         <div id="socksURLContainer"></div>
     </div>
-    
     <div class="brand-box" id="contact-section">
         <div class="card promo-card">
-            <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;">
-                <span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)
-            </div>
-            <div style="font-size: 13px; color: #92400e; text-align: center;">
-                单次购买动态流量 <b>1T 以上</b>，额外<span class="highlight-red">加赠 100G</span>。
-            </div>
-            <div style="font-size: 11px; color: #b45309; text-align: center; margin-top: 8px;">
-                今日剩余名额：<span id="stock-num" style="font-weight:bold; color:red;">10</span> 个
-            </div>
+            <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;"><span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)</div>
+            <div style="font-size: 13px; color: #92400e; text-align: center;">单次购买动态流量 <b>1T 以上</b>，额外<span class="highlight-red">加赠 100G</span>。</div>
+            <div style="font-size: 11px; color: #b45309; text-align: center; margin-top: 8px;">今日剩余名额：<span id="stock-num" style="font-weight:bold; color:red;">10</span> 个</div>
         </div>
         <div class="brand-title">官方授权【动态】代理品牌</div>
         <div class="brand-subtitle">我们已对下述全球主流代理平台进行深度压力测试，FireIP 用户可享受专属优先调度与技术适配。</div>
@@ -124,79 +88,46 @@
             <a href="https://iprocket.io" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=iprocket.io">iprocket<span class="recommend">(推荐)</span></a>
             <a href="https://ipwo.net" class="brand-item"><img src="https://www.google.com/s2/favicons?domain=ipwo.net">ipwo<span class="recommend">(推荐)</span></a>
         </div>
-        
         <div class="contact-grid" style="padding: 20px;">
-            <a class="btn-link" href="https://t.me/huoliIP" target="_blank">
-                <span class="wave-text" style="animation-delay: 0s;">联</span><span class="wave-text" style="animation-delay: 0.2s;">系</span><span class="wave-text" style="animation-delay: 0.4s;">T</span><span class="wave-text" style="animation-delay: 0.6s;">G</span><span class="wave-text" style="animation-delay: 0.8s;">客</span><span class="wave-text" style="animation-delay: 1.0s;">服</span>
-            </a>
-            <a class="btn-link" style="background: #10b981;" onclick="alert('请手动添加微信：a15016410566')">
-                <span class="wave-text" style="animation-delay: 0s;">点</span><span class="wave-text" style="animation-delay: 0.2s;">击</span><span class="wave-text" style="animation-delay: 0.4s;">获</span><span class="wave-text" style="animation-delay: 0.6s;">取</span><span class="wave-text" style="animation-delay: 0.8s;">微</span><span class="wave-text" style="animation-delay: 1.0s;">信</span>
-            </a>
-            <a class="btn-link" href="https://t.me/huoli_proxy" target="_blank">
-                <span class="wave-text" style="animation-delay: 0s;">进</span><span class="wave-text" style="animation-delay: 0.2s;">入</span><span class="wave-text" style="animation-delay: 0.4s;">T</span><span class="wave-text" style="animation-delay: 0.6s;">G</span><span class="wave-text" style="animation-delay: 0.8s;">频</span><span class="wave-text" style="animation-delay: 1.0s;">道</span>
-            </a>
-            <a class="btn-link" style="background: #059669;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode">
-                <span class="wave-text" style="animation-delay: 0s;">跳</span><span class="wave-text" style="animation-delay: 0.2s;">转</span><span class="wave-text" style="animation-delay: 0.4s;">添</span><span class="wave-text" style="animation-delay: 0.6s;">加</span><span class="wave-text" style="animation-delay: 0.8s;">Q</span><span class="wave-text" style="animation-delay: 1.0s;">Q</span>
-            </a>
+            <a class="btn-link" href="https://t.me/huoliIP" target="_blank"><span class="wave-text">联系TG客服</span></a>
+            <a class="btn-link" style="background: #10b981;" onclick="alert('请手动添加微信：a15016410566')"><span class="wave-text">获取微信</span></a>
+            <a class="btn-link" href="https://t.me/huoli_proxy" target="_blank"><span class="wave-text">进入TG频道</span></a>
+            <a class="btn-link" style="background: #059669;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode"><span class="wave-text">添加QQ</span></a>
         </div>
     </div>
-    
     <div class="card">
-        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
-            <h3 style="font-size: 20px; color: #1e293b; margin: 0; display: inline-flex; align-items: center; gap: 8px;">
-                ✨ 选购专业指南与建议 ✨
-            </h3>
-        </div>
-        <ul style="font-size: 13px; text-align: left; color: #475569; padding-left: 20px; margin-bottom: 0px; line-height: 1.6; font-family: Arial, Helvetica, sans-serif;">
-            <li><b>静态 IP (Static IP)：</b> 提供长期固定的归属地，IP 纯净度极高。主要用于<b>海外电商运营</b>防关联，确保账号环境高度稳定；同时也是<b>个人社交媒体、金融账户</b>长期登录的必备选择。</li>
-            <li><b>动态 IP (Rotating IP)：</b> 具备海量 IP 池，支持高频自动切换。是<b>大规模网页数据采集、舆情监测、广告竞价分析</b>的核心工具。</li>
-            <li><b>自动化营销/批量操作：</b> 结合脚本实现业务自动化。利用 IP 轮换优势，最大化模拟真实全球用户行为。</li>
-        </ul>
+        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 常见问题与指南 ✨</h3></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">如何防关联？</button><div class="faq-answer">使用独享静态原生 IP，配合干净的浏览器指纹环境，可有效降低多账号关联风险。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">为什么 IP 会掉线？</button><div class="faq-answer">建议检查网络连通性或 IP 代理协议是否过期；如使用动态 IP，请确认端口切换频率。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">静态与动态区别？</button><div class="faq-answer">静态 IP 适合固定登录、防关联；动态 IP 适合爬虫采集、自动化大批量操作。</div></div>
     </div>
 </div>
-
 <a href="#contact-section" class="float-contact">💬 客服</a>
-
 <script>
     function calculateStock() {
         let now = new Date();
-        let hour = now.getHours();
-        let minute = now.getMinutes();
-        let totalMinutesToday = hour * 60 + minute;
+        let totalMinutesToday = now.getHours() * 60 + now.getMinutes();
         let daySeed = now.getFullYear() + now.getMonth() + now.getDate();
         let randomOffset = (daySeed % 50) - 25;
         let consumed = Math.floor(totalMinutesToday / (144 + randomOffset));
         let stock = 10 - consumed;
         return stock < 0 ? 0 : stock;
     }
-
-    function syncStock() {
-        let stockDisplay = document.getElementById('stock-num');
-        stockDisplay.innerText = calculateStock();
-    }
-
-    syncStock();
-    setInterval(syncStock, 300000); 
-
+    function syncStock() { document.getElementById('stock-num').innerText = calculateStock(); }
+    syncStock(); setInterval(syncStock, 300000); 
     function generateQRCode() {
         var rawText = document.getElementById('inputText').value;
         var proto = document.getElementById('protocolSelect').value;
         var lines = rawText.split('\n').filter(line => line.trim() !== "");
         var container = document.getElementById('socksURLContainer');
         var qrcodeDiv = document.getElementById('qrcode');
-        container.innerHTML = '';
-        qrcodeDiv.innerHTML = '';
+        container.innerHTML = ''; qrcodeDiv.innerHTML = '';
         lines.forEach(function(line) {
             var p = line.split(':');
             if(p.length >= 4) {
                 var url = proto === "http://" ? "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1] : proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];
-                var div = document.createElement('div');
-                div.style.marginBottom = "8px";
-                div.textContent = url;
-                container.appendChild(div);
-                if (container.children.length === 1) {
-                    new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });
-                }
+                var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
+                if (container.children.length === 1) new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });
             }
         });
     }
