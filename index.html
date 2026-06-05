@@ -17,9 +17,9 @@
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
         .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; font-size: 13px; }
         
-        /* 修改为向前凸起放大效果 */
-        @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
-        .wave-text { display: inline-block; animation: pop 1.5s infinite ease-in-out; }
+        /* 序列式波浪凸起动画：延迟间隔拉大，确保一个跳完下一个再跳 */
+        @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+        .wave-text { display: inline-block; animation: pop 1.2s infinite ease-in-out; }
         
         .tool-box { width: 100%; }
         textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333; }
@@ -89,16 +89,16 @@
         
         <div class="contact-grid" style="padding: 20px;">
             <a class="btn-link" href="https://t.me/huoliIP" target="_blank">
-                <span class="wave-text" style="animation-delay: 0s;">联</span><span class="wave-text" style="animation-delay: 0.1s;">系</span><span class="wave-text" style="animation-delay: 0.2s;">T</span><span class="wave-text" style="animation-delay: 0.3s;">G</span><span class="wave-text" style="animation-delay: 0.4s;">客</span><span class="wave-text" style="animation-delay: 0.5s;">服</span>
+                <span class="wave-text" style="animation-delay: 0s;">联</span><span class="wave-text" style="animation-delay: 0.2s;">系</span><span class="wave-text" style="animation-delay: 0.4s;">T</span><span class="wave-text" style="animation-delay: 0.6s;">G</span><span class="wave-text" style="animation-delay: 0.8s;">客</span><span class="wave-text" style="animation-delay: 1.0s;">服</span>
             </a>
             <a class="btn-link" style="background: #10b981;" onclick="alert('请手动添加微信：a15016410566')">
-                <span class="wave-text" style="animation-delay: 0s;">点</span><span class="wave-text" style="animation-delay: 0.1s;">击</span><span class="wave-text" style="animation-delay: 0.2s;">获</span><span class="wave-text" style="animation-delay: 0.3s;">取</span><span class="wave-text" style="animation-delay: 0.4s;">微</span><span class="wave-text" style="animation-delay: 0.5s;">信</span>
+                <span class="wave-text" style="animation-delay: 0s;">点</span><span class="wave-text" style="animation-delay: 0.2s;">击</span><span class="wave-text" style="animation-delay: 0.4s;">获</span><span class="wave-text" style="animation-delay: 0.6s;">取</span><span class="wave-text" style="animation-delay: 0.8s;">微</span><span class="wave-text" style="animation-delay: 1.0s;">信</span>
             </a>
             <a class="btn-link" href="https://t.me/huoli_proxy" target="_blank">
-                <span class="wave-text" style="animation-delay: 0s;">进</span><span class="wave-text" style="animation-delay: 0.1s;">入</span><span class="wave-text" style="animation-delay: 0.2s;">T</span><span class="wave-text" style="animation-delay: 0.3s;">G</span><span class="wave-text" style="animation-delay: 0.4s;">频</span><span class="wave-text" style="animation-delay: 0.5s;">道</span>
+                <span class="wave-text" style="animation-delay: 0s;">进</span><span class="wave-text" style="animation-delay: 0.2s;">入</span><span class="wave-text" style="animation-delay: 0.4s;">T</span><span class="wave-text" style="animation-delay: 0.6s;">G</span><span class="wave-text" style="animation-delay: 0.8s;">频</span><span class="wave-text" style="animation-delay: 1.0s;">道</span>
             </a>
             <a class="btn-link" style="background: #059669;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode">
-                <span class="wave-text" style="animation-delay: 0s;">跳</span><span class="wave-text" style="animation-delay: 0.1s;">转</span><span class="wave-text" style="animation-delay: 0.2s;">添</span><span class="wave-text" style="animation-delay: 0.3s;">加</span><span class="wave-text" style="animation-delay: 0.4s;">Q</span><span class="wave-text" style="animation-delay: 0.5s;">Q</span>
+                <span class="wave-text" style="animation-delay: 0s;">跳</span><span class="wave-text" style="animation-delay: 0.2s;">转</span><span class="wave-text" style="animation-delay: 0.4s;">添</span><span class="wave-text" style="animation-delay: 0.6s;">加</span><span class="wave-text" style="animation-delay: 0.8s;">Q</span><span class="wave-text" style="animation-delay: 1.0s;">Q</span>
             </a>
         </div>
     </div>
