@@ -17,7 +17,6 @@
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
         .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; font-size: 13px; }
         
-        /* 调整后的动画：缩小幅度至 1.15，并将周期拉长至 2.5s */
         @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         .wave-text { display: inline-block; animation: pop 2.5s infinite ease-in-out; }
         
@@ -104,7 +103,11 @@
     </div>
     
     <div class="card">
-        <h3 style="font-size: 16px; margin-bottom: 15px; text-align: center; color: #1e293b;">💡 选购建议</h3>
+        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+            <h3 style="font-size: 20px; color: #1e293b; margin: 0; display: inline-flex; align-items: center; gap: 8px;">
+                <span style="color: #f59e0b;">✨</span> 选购专业指南与建议 <span style="color: #f59e0b;">✨</span>
+            </h3>
+        </div>
         <ul style="font-size: 13px; text-align: left; color: #475569; padding-left: 20px; margin-bottom: 0px; line-height: 1.6; font-family: Arial, Helvetica, sans-serif;">
             <li><b>静态 IP (Static IP)：</b> 提供长期固定的归属地，IP 纯净度极高。主要用于<b>海外电商运营</b>防关联，确保账号环境高度稳定；同时也是<b>个人社交媒体、金融账户</b>长期登录的必备选择。</li>
             <li><b>动态 IP (Rotating IP)：</b> 具备海量 IP 池，支持高频自动切换。是<b>大规模网页数据采集、舆情监测、广告竞价分析</b>的核心工具。</li>
