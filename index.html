@@ -16,6 +16,11 @@
         .promo-card { border: 2px solid #f59e0b !important; background: #fffbeb; animation: breath 2s infinite ease-in-out; margin-bottom: 10px; }
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
         .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; font-size: 13px; }
+        
+        /* 海浪跳动动画 */
+        @keyframes wave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .wave-btn { animation: wave 2s infinite ease-in-out; }
+        
         .tool-box { width: 100%; }
         textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333; }
         .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; }
@@ -41,7 +46,6 @@
 <div class="container">
     
     <div class="card">
-        <!-- 已恢复正确头像链接 -->
         <img id="logo" src="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
         <h2><span class="status-dot"></span>FireIP 火力海外代理</h2>
         <div style="text-align:center; font-size: 12px; color: #64748b; margin-bottom: 15px;">专注海外代理 3 年，已服务 500+ 电商卖家与工作室。</div>
@@ -84,10 +88,10 @@
         </div>
         
         <div class="contact-grid" style="padding: 20px;">
-            <a class="btn-link" style="background: #2563eb;" href="https://t.me/huoliIP" target="_blank">联系TG客服</a>
-            <a class="btn-link" style="background: #10b981;" onclick="alert('请手动添加微信：a15016410566')">点击获取微信</a>
-            <a class="btn-link" style="background: #2563eb;" href="https://t.me/huoli_proxy" target="_blank">进入TG频道</a>
-            <a class="btn-link" style="background: #059669;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode">跳转添加QQ</a>
+            <a class="btn-link wave-btn" style="background: #2563eb; animation-delay: 0s;" href="https://t.me/huoliIP" target="_blank">联系TG客服</a>
+            <a class="btn-link wave-btn" style="background: #10b981; animation-delay: 0.2s;" onclick="alert('请手动添加微信：a15016410566')">点击获取微信</a>
+            <a class="btn-link wave-btn" style="background: #2563eb; animation-delay: 0.4s;" href="https://t.me/huoli_proxy" target="_blank">进入TG频道</a>
+            <a class="btn-link wave-btn" style="background: #059669; animation-delay: 0.6s;" href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=272734257&card_type=person&source=qrcode">跳转添加QQ</a>
         </div>
     </div>
     
