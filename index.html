@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- Telegram 分享预览元数据 -->
     <meta property="og:title" content="FireIP - 优质代理服务">
     <meta property="og:description" content="专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。">
     <meta property="og:image" content="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
     <meta property="og:type" content="website">
 
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-18BWG0F5ZL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -46,6 +48,8 @@
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
         #qrcode { display:flex; justify-content:center; margin-top:15px; }
         #socksURLContainer { margin-top: 15px; word-break: break-all; color: var(--text); font-size: 13px; line-height: 1.4; text-align: center; }
+        .copy-btn { margin-top: 10px; background: #64748b; padding: 8px 16px; font-size: 12px; border-radius: 6px; }
+        .tip-text { font-size: 12px; color: #64748b; margin-top: 10px; text-align: center; line-height: 1.5; padding: 5px; background: #f1f5f9; border-radius: 8px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
         .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
         .feature-item { padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11px; text-align: center; }
@@ -87,6 +91,13 @@
         <button onclick="generateQRCode()">生成专属二维码</button>
         <div id="qrcode"></div>
         <div id="socksURLContainer"></div>
+        <div id="copyAction" style="display:none; text-align:center;">
+            <button class="copy-btn" onclick="copyResult()">一键复制所有配置</button>
+        </div>
+        <div class="tip-text">
+            <b>手机端用户：</b>请直接扫描上方二维码导入。<br>
+            <b>电脑端用户：</b>请点击上方按钮一键复制配置信息。
+        </div>
     </div>
     <div class="brand-box" id="contact-section">
         <div class="card promo-card">
@@ -135,10 +146,6 @@
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q8: 什么是住宅原生 IP？</button><div class="faq-answer">原生 IP 指由真实 ISP 分配的家庭宽带段，被平台标记为真实用户的概率极高，是长期运营高权重账号的首选。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q9: 链式代理有什么好处？</button><div class="faq-answer">通过多层转发，链式代理可以更好地隐藏本地网络特征，提高隐私安全性，是规避高强度网络风控的进阶策略。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q10: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟不等）。建议在工具箱中及时更新配置，以确保 IP 处于活跃状态。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q11: 使用指纹浏览器时，代理 IP 设置为“全局”还是“自动匹配”？</button><div class="faq-answer">建议设置为“自动匹配”或“全局代理”。由于指纹浏览器会接管该配置文件的所有网络请求，设置为全局可确保 WebRTC、DNS 解析以及所有的 HTTP 请求均强制走代理通道，避免“漏网之鱼”泄露真实环境。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q12: 指纹浏览器环境中的“WebRTC”设置应该选什么？</button><div class="faq-answer">核心原则是“替换”或“阻塞”。如果选“真实”，浏览器会将物理网卡信息通过 WebRTC 直接暴露给网站；请务必在浏览器设置中开启“替换为代理 IP”模式，这样网站获取到的 WebRTC 地址将与您的代理 IP 一致，从而通过平台的合法性验证。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q13: 同一个 IP 可以在多个浏览器指纹环境中使用吗？</button><div class="faq-answer">绝对不行。这会产生“关联”风险。正确的逻辑是：1 个高质量静态 IP 对应 1 个独立的浏览器环境。如果是动态 IP，也要确保在同一个环境中轮换，切忌将同一个 IP 同时在不同设备或不同环境的浏览器中登录，这极易触发平台封号。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q14: 为什么我的指纹浏览器环境总是显示“时区不匹配”？</button><div class="faq-answer">这是常见的环境关联点。在配置环境时，请务必在指纹浏览器的设置中勾选“基于 IP 自动设置时区/语言/GPS”。让浏览器根据代理 IP 的地理位置，自动匹配对应国家的时区，从而模拟出在该地真实办公的状态。</div></div>
     </div>
 </div>
 <a href="#contact-section" class="float-contact">💬 客服</a>
@@ -176,12 +183,14 @@
     }
     function syncStock() { document.getElementById('stock-num').innerText = calculateStock(); }
     syncStock(); setInterval(syncStock, 300000); 
+
     function generateQRCode() {
         var rawText = document.getElementById('inputText').value;
         var proto = document.getElementById('protocolSelect').value;
         var lines = rawText.split('\n').filter(line => line.trim() !== "");
         var container = document.getElementById('socksURLContainer');
         var qrcodeDiv = document.getElementById('qrcode');
+        var copyAction = document.getElementById('copyAction');
         container.innerHTML = ''; qrcodeDiv.innerHTML = '';
         lines.forEach(function(line) {
             var p = line.split(':');
@@ -190,6 +199,15 @@
                 var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
                 if (container.children.length === 1) new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });
             }
+        });
+        if(container.children.length > 0) copyAction.style.display = 'block';
+    }
+
+    function copyResult() {
+        var container = document.getElementById('socksURLContainer');
+        var text = container.innerText;
+        navigator.clipboard.writeText(text).then(function() {
+            alert('所有配置已复制到剪贴板！');
         });
     }
 </script>
