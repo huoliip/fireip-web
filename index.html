@@ -45,6 +45,7 @@
         .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; }
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
         #qrcode { display:flex; flex-direction: column; align-items: center; margin-top:15px; }
+        .qr-item-wrapper { padding: 10px; background: white; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
         #socksURLContainer { margin-top: 15px; word-break: break-all; color: var(--text); font-size: 13px; line-height: 1.4; text-align: center; }
         .copy-btn { margin-top: 10px; background: #64748b; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: white; cursor: pointer; margin-right: 5px; }
         .clear-btn { margin-top: 10px; background: #e2e8f0; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: #475569; cursor: pointer; }
@@ -209,7 +210,7 @@
                 var url = proto === "http://" ? "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1] : proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];
                 
                 var qrWrapper = document.createElement('div');
-                qrWrapper.className = 'qr-item';
+                qrWrapper.className = 'qr-item-wrapper';
                 if(index > 0) qrWrapper.style.display = 'none'; // 默认只显示第一个
                 
                 var qrContainer = document.createElement('div');
@@ -230,7 +231,7 @@
     }
 
     function toggleQRCodes() {
-        var items = document.getElementsByClassName('qr-item');
+        var items = document.getElementsByClassName('qr-item-wrapper');
         for(var i = 1; i < items.length; i++) {
             items[i].style.display = (items[i].style.display === 'none' ? 'block' : 'none');
         }
