@@ -219,7 +219,7 @@
                 
                 new QRCode(qrContainer, { text: url, width: 200, height: 200 });
                 
-                var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = (index === 0 ? "显示为第一个IP的二维码" : "隐藏二维码") + ": " + url; container.appendChild(div);
+                var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
             }
         });
         
