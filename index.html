@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- Telegram 分享预览元数据 -->
     <meta property="og:title" content="FireIP - 优质代理服务">
     <meta property="og:description" content="专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。">
     <meta property="og:image" content="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
     <meta property="og:type" content="website">
 
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-18BWG0F5ZL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -62,8 +64,12 @@
         .brand-item { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 11px; color: #475569; text-decoration: none; }
         .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f8fafc; padding: 2px; }
         .recommend { color: #dc2626; font-weight: bold; font-size: 10px; margin-top: 2px; }
-        .float-contact { position: fixed; bottom: 80px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-size: 14px; box-shadow: 0 4px 12px rgba(37,99,235,0.4); z-index: 1000; text-decoration: none; font-weight: bold; }
-        .theme-toggle { position: fixed; bottom: 20px; right: 20px; background: #333; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-size: 20px; }
+        
+        /* 修改后的客服按钮和夜览按钮样式 */
+        .float-contact, .theme-toggle { position: fixed; right: 20px; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-size: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s; }
+        .float-contact { bottom: 80px; background: #2563eb; color: white; text-decoration: none; }
+        .theme-toggle { bottom: 20px; background: #333; color: white; }
+        
         .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
         .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; color: #333; cursor: pointer; }
         .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; background: #fff; line-height: 1.6; }
@@ -139,24 +145,21 @@
     <div class="card">
         <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 常见问题与技术指南 ✨</h3></div>
         <button style="width:100%; margin-bottom:15px; padding:10px; background:#2563eb; color:white; border:none; border-radius:10px; font-weight:bold;" onclick="alert('请联系客服获取新手配置文件及配置录屏教程！')">新手快速上手配置指引 (点击咨询)</button>
-        
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q1: 如何有效进行电商防关联？</button><div class="faq-answer">使用 FireIP 独享静态原生 IP，保持固定归属地，配合浏览器指纹插件，可极大程度降低账号封禁风险，确保运营环境稳定。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q2: 为什么我的 IP 经常掉线？</button><div class="faq-answer">请首先检查设备网络稳定性，并确认代理协议配置是否正确。若使用动态 IP，请留意端口生存周期，或联系客服为您调整调度策略。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q3: 静态 IP 与动态 IP 该如何选择？</button><div class="faq-answer">静态 IP 提供固定位置，适合金融、社交账号长期维护；动态 IP 具备海量 IP 池，适合自动化数据采集、广告点击及大批量营销任务。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q4: 使用代理 IP 会被平台检测到吗？</button><div class="faq-answer">FireIP 采用高质量原生代理，IP 纯净度高，模拟真实全球用户行为。通过合理的浏览器指纹配置，可有效规避各平台检测机制。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q5: 如何获取专属的技术支持？</button><div class="faq-answer">点击页面底部的 TG 客服或微信链接，我们提供一对一技术调试，协助您快速适配各类海外业务场景。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q6: 你们的 IP 池覆盖哪些国家？</button><div class="faq-answer">我们拥有覆盖全球 190+ 国家的原生 IP 资源，支持精准到城市的地理位置定位，满足您全球化业务的差异化需求。</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q6: 你们的 IP 池覆盖哪些国家？</button><div class="faq-answer">我们拥有覆盖全球 190+国家的原生 IP 资源，支持精准到城市的地理位置定位，满足您全球化业务的差异化需求。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q7: 为什么挂了代理还是被封号？</button><div class="faq-answer">除 IP 外，浏览器指纹（WebRTC, Canvas, 时区）也是重要因素。请务必使用上方“环境体检”确保 WebRTC 无泄露，并配合指纹浏览器使用。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q8: 什么是住宅原生 IP？</button><div class="faq-answer">原生 IP 指由真实 ISP 分配的家庭宽带段，被平台标记为真实用户的概率极高，是长期运营高权重账号的首选。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q9: 链式代理有什么好处？</button><div class="faq-answer">通过多层转发，链式代理可以更好地隐藏本地网络特征，提高隐私安全性，是规避高强度网络风控的进阶策略。</div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q10: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟不等）。建议在工具箱中及时更新配置，以确保 IP 处于活跃状态。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q11: 使用指纹浏览器时，代理 IP 设置为“全局”还是“自动匹配”？</button><div class="faq-answer">建议设置为“自动匹配”或“全局代理”。由于指纹浏览器会接管该配置文件的所有网络请求，设置为全局可确保 WebRTC、DNS 解析以及所有的 HTTP 请求均强制走代理通道，避免“漏网之鱼”泄露真实环境。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q12: 指纹浏览器环境中的“WebRTC”设置应该选什么？</button><div class="faq-answer">核心原则是“替换”或“阻塞”。如果选“真实”，浏览器会将物理网卡信息通过 WebRTC 直接暴露给网站；请务必在浏览器设置中开启“替换为代理 IP”模式，这样网站获取到的 WebRTC 地址将与您的代理 IP 一致，从而通过平台的合法性验证。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q13: 同一个 IP 可以在多个浏览器指纹环境中使用吗？</button><div class="faq-answer">绝对不行。这会产生“关联”风险。正确的逻辑是：1 个高质量静态 IP 对应 1 个独立的浏览器环境。如果是动态 IP，也要确保在同一个环境中轮换，切忌将同一个 IP 同时在不同设备或不同环境的浏览器中登录，这极易触发平台封号。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q14: 为什么我的指纹浏览器环境总是显示“时区不匹配”？</button><div class="faq-answer">这是常见的环境关联点。在配置环境时，请务必在指纹浏览器的设置中勾选“基于 IP 自动设置时区/语言/GPS”。让浏览器根据代理 IP 的地理位置，自动匹配对应国家的时区，从而模拟出在该地真实办公的状态。</div></div>
     </div>
 </div>
-<a href="#contact-section" class="float-contact">💬 客服</a>
+
+<!-- 底部按钮 -->
+<a href="https://t.me/huoliIP" target="_blank" class="float-contact">💬</a>
 <div class="theme-toggle" onclick="document.body.classList.toggle('dark-mode')">🌙</div>
 
 <script>
@@ -210,7 +213,6 @@
                 
                 var qrWrapper = document.createElement('div');
                 qrWrapper.className = 'qr-item-wrapper';
-                // 仅当多于1个配置时，从第2个开始隐藏
                 if(lines.length > 1 && index > 0) qrWrapper.style.display = 'none';
                 
                 var qrContainer = document.createElement('div');
