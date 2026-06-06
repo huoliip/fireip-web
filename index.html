@@ -100,8 +100,7 @@
             </div>
         </div>
         <div class="tip-text">
-            <b>手机端用户：</b>请直接扫描上方二维码导入。<br>
-            <b>电脑端用户：</b>请点击上方按钮一键复制配置信息。
+            <b>手机端用户：</b>请直接扫描上方二维码导入。
         </div>
     </div>
     <div class="brand-box" id="contact-section">
@@ -175,19 +174,11 @@
     }
     getIP(); checkWebRTC();
 
-    // 优化在线人数逻辑：使用基于基准的随机波动，范围更广且更自然
-    let currentCount = 362;
     function updateOnlineCount() {
-        // 随机步长：-50 到 +50 之间
-        let change = Math.floor(Math.random() * 101) - 50;
-        currentCount += change;
-        // 设定合理的人数范围：50 到 800 之间
-        if (currentCount < 50) currentCount = 50 + Math.floor(Math.random() * 50);
-        if (currentCount > 800) currentCount = 800 - Math.floor(Math.random() * 50);
-        
-        document.getElementById('online-count').innerText = currentCount;
+        let count = 300 + Math.floor(Math.random() * 150);
+        document.getElementById('online-count').innerText = count;
     }
-    setInterval(updateOnlineCount, 4000);
+    setInterval(updateOnlineCount, 5000);
 
     function calculateStock() {
         let now = new Date();
@@ -219,7 +210,8 @@
                 
                 var qrWrapper = document.createElement('div');
                 qrWrapper.className = 'qr-item-wrapper';
-                if(index > 0) qrWrapper.style.display = 'none'; // 默认只显示第一个
+                // 仅当多于1个配置时，从第2个开始隐藏
+                if(lines.length > 1 && index > 0) qrWrapper.style.display = 'none';
                 
                 var qrContainer = document.createElement('div');
                 qrWrapper.appendChild(qrContainer);
@@ -227,7 +219,7 @@
                 
                 new QRCode(qrContainer, { text: url, width: 200, height: 200 });
                 
-                var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
+                var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = (index === 0 ? "显示为第一个IP的二维码" : "隐藏二维码") + ": " + url; container.appendChild(div);
             }
         });
         
