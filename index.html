@@ -46,8 +46,8 @@
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
         #qrcode { display:flex; justify-content:center; margin-top:15px; }
         #socksURLContainer { margin-top: 15px; word-break: break-all; color: var(--text); font-size: 13px; line-height: 1.4; text-align: center; }
-        .copy-btn { margin-top: 10px; background: #64748b; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: white; cursor: pointer; }
-        .clear-btn { margin-top: 10px; background: #ef4444; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: white; cursor: pointer; }
+        .copy-btn { margin-top: 10px; background: #64748b; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: white; cursor: pointer; margin-right: 5px; }
+        .clear-btn { margin-top: 10px; background: #e2e8f0; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: #475569; cursor: pointer; }
         .tip-text { font-size: 12px; color: #64748b; margin-top: 10px; text-align: center; line-height: 1.5; padding: 5px; background: #f1f5f9; border-radius: 8px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
         .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
@@ -92,7 +92,7 @@
         <div id="socksURLContainer"></div>
         <div id="copyAction" style="display:none; text-align:center; margin-top:10px;">
             <button class="copy-btn" onclick="copyResult()">一键复制所有配置</button>
-            <button class="clear-btn" onclick="clearAll()">一键清空</button>
+            <button class="clear-btn" onclick="clearAll()">一键清空所有配置</button>
         </div>
         <div class="tip-text">
             <b>手机端用户：</b>请直接扫描上方二维码导入。<br>
