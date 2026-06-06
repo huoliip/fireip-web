@@ -64,12 +64,13 @@
         .brand-item { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 11px; color: #475569; text-decoration: none; }
         .brand-item img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; background: #f8fafc; padding: 2px; }
         .recommend { color: #dc2626; font-weight: bold; font-size: 10px; margin-top: 2px; }
-        
         .float-contact, .theme-toggle { position: fixed; right: 20px; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-size: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         .float-contact { bottom: 80px; background: #2563eb; color: white; text-decoration: none; }
         .theme-toggle { bottom: 20px; background: #333; color: white; }
-        
-        .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+        .faq-tabs { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
+        .tab-btn { padding: 8px 12px; background: #e2e8f0; border: none; border-radius: 8px; font-size: 12px; cursor: pointer; color: #475569; white-space: nowrap; }
+        .tab-btn.active { background: var(--primary); color: white; }
+        .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; display: none; }
         .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; color: #333; cursor: pointer; }
         .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; background: #fff; line-height: 1.6; }
         @media (max-width: 480px) { .brand-grid { gap: 10px; } .brand-item { font-size: 9px; } .brand-item img { width: 28px; height: 28px; } }
@@ -91,6 +92,7 @@
             <div class="feature-item"><b>全天候响应</b>一对一技术支持</div>
         </div>
     </div>
+    
     <div class="tool-box">
         <textarea id="inputText" placeholder="格式: 地址:端口:账号:密码 (每一行一个IP)"></textarea>
         <select id="protocolSelect" class="protocol-select"><option value="socks://">SOCKS5</option><option value="http://">HTTP</option></select>
@@ -108,6 +110,7 @@
             <b>手机端用户：</b>请直接扫描上方二维码导入。
         </div>
     </div>
+
     <div class="brand-box" id="contact-section">
         <div class="card promo-card">
             <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;"><span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)</div>
@@ -145,32 +148,45 @@
         <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 常见问题与技术指南 ✨</h3></div>
         <button style="width:100%; margin-bottom:15px; padding:10px; background:#2563eb; color:white; border:none; border-radius:10px; font-weight:bold;" onclick="alert('请联系客服获取新手配置文件及配置录屏教程！')">新手快速上手配置指引 (点击咨询)</button>
         
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q1: 如何有效进行电商防关联？</button><div class="faq-answer">使用 FireIP 独享静态原生 IP，保持固定归属地，配合浏览器指纹插件，可极大程度降低账号封禁风险，确保运营环境稳定。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q2: 为什么我的 IP 经常掉线？</button><div class="faq-answer">请首先检查设备网络稳定性，并确认代理协议配置是否正确。若使用动态 IP，请留意端口生存周期，或联系客服为您调整调度策略。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q3: 静态 IP 与动态 IP 该如何选择？</button><div class="faq-answer">静态 IP 提供固定位置，适合金融、社交账号长期维护；动态 IP 具备海量 IP 池，适合自动化数据采集、广告点击及大批量营销任务。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q4: 使用代理 IP 会被平台检测到吗？</button><div class="faq-answer">FireIP 采用高质量原生代理，IP 纯净度高，模拟真实全球用户行为。通过合理的浏览器指纹配置，可有效规避各平台检测机制。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q5: 如何获取专属的技术支持？</button><div class="faq-answer">点击页面底部的 TG 客服或微信链接，我们提供一对一技术调试，协助您快速适配各类海外业务场景。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q6: 你们的 IP 池覆盖哪些国家？</button><div class="faq-answer">我们拥有覆盖全球 190+国家的原生 IP 资源，支持精准到城市的地理位置定位，满足您全球化业务的差异化需求。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q7: 为什么挂了代理还是被封号？</button><div class="faq-answer">除 IP 外，浏览器指纹（WebRTC, Canvas, 时区）也是重要因素。请务必使用上方“环境体检”确保 WebRTC 无泄露，并配合指纹浏览器使用。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q8: 什么是住宅原生 IP？</button><div class="faq-answer">原生 IP 指由真实 ISP 分配的家庭宽带段，被平台标记为真实用户的概率极高，是长期运营高权重账号的首选。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q9: 链式代理有什么好处？</button><div class="faq-answer">通过多层转发，链式代理可以更好地隐藏本地网络特征，提高隐私安全性，是规避高强度网络风控的进阶策略。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q10: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟不等）。建议在工具箱中及时更新配置，以确保 IP 处于活跃状态。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q11: 使用指纹浏览器时，代理 IP 设置为“全局”还是“自动匹配”？</button><div class="faq-answer">建议设置为“自动匹配”或“全局代理”。由于指纹浏览器会接管该配置文件的所有网络请求，设置为全局可确保 WebRTC、DNS 解析以及所有的 HTTP 请求均强制走代理通道，避免“漏网之鱼”泄露真实环境。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q12: 指纹浏览器环境中的“WebRTC”设置应该选什么？</button><div class="faq-answer">核心原则是“替换”或“阻塞”。如果选“真实”，浏览器会将物理网卡信息通过 WebRTC 直接暴露给网站；请务必在浏览器设置中开启“替换为代理 IP”模式，这样网站获取到的 WebRTC 地址将与您的代理 IP 一致，从而通过平台的合法性验证。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q13: 同一个 IP 可以在多个浏览器指纹环境中使用吗？</button><div class="faq-answer">绝对不行。这会产生“关联”风险。正确的逻辑是：1 个高质量静态 IP 对应 1 个独立的浏览器环境。如果是动态 IP，也要确保在同一个环境中轮换，切忌将同一个 IP 同时在不同设备或不同环境的浏览器中登录，这极易触发平台封号。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q14: 为什么我的指纹浏览器环境总是显示“时区不匹配”？</button><div class="faq-answer">这是常见的环境关联点。在配置环境时，请务必在指纹浏览器的设置中勾选“基于 IP 自动设置时区/语言/GPS”。让浏览器根据代理 IP 的地理位置，自动匹配对应国家的时区，从而模拟出在该地真实办公的状态。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q15: 为什么在切换代理后，我的浏览器仍然提示“时区异常”？</button><div class="faq-answer">浏览器通常通过 HTML5 的 Intl.DateTimeFormat API 获取时区。如果您的浏览器指纹设置中没有勾选“自动同步时区”，浏览器会读取您物理设备的系统时区。请在指纹浏览器（如 AdsPower, Hubstudio 等）中将时区设置为“基于 IP 自动匹配”，这样系统会自动根据代理 IP 的城市信息调整本地时区环境。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q16: 使用住宅动态 IP 时，如何判定 IP 被“污染”或“黑名单”了？</button><div class="faq-answer">如果您发现某个 IP 访问主流电商网站（如 Amazon, eBay）时频繁触发“验证码 (Captcha)”或直接提示“由于安全原因无法访问”，则该 IP 可能已进入平台的风控黑名单。此时最专业的处理是立即更换出口节点（获取新 IP），千万不要尝试在一个被标记的 IP 上多次刷新，否则会加速关联封号。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q17: 为什么使用代理后，网速非常慢，甚至加载不出图片？</button><div class="faq-answer">这通常由三个原因造成：1. 您选择的代理服务器地理位置离目标网站数据中心过远（物理延迟）；2. 代理协议选型不当（SOCKS5 比 HTTP 协议在处理高并发小包时通常更稳定）；3. 节点负载过高。建议优先选择“原生住宅代理”，并确保指纹浏览器中开启了“UDP 转发”功能，以优化连接效率。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q18: 在多账号矩阵操作中，最致命的“关联因素”是什么？</button><div class="faq-answer">除了 IP 必须隔离外，更要警惕“环境特征匹配”。例如：即使更换了 IP，但如果浏览器插件、字体列表、Canvas 指纹、设备型号完全一致，平台也能精准判定为“同一设备”。请确保每个账号配置使用独立的“浏览器配置文件”，不要复用任何 cookie、缓存或指纹参数。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q19: 为什么你们的代理必须使用“中转”链路？</button><div class="faq-answer">中转链路是确保网络访问稳定性的关键。对于中国大陆用户，中转是建立跨境连接的必要前提；而对于海外用户，中转链路可以绕过部分地区（如部分东南亚高风险国家）对特定 IP 段的访问限制，同时过滤不稳定的路由节点，确保您的业务在任何地区都能保持链路畅通。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q20: 我在海外使用，也需要通过中转连接吗？</button><div class="faq-answer">通常情况下，如果您所在的国家网络环境相对开放，部分场景可直连。但为了应对部分平台（如 TikTok, 亚马逊）针对特定高风险地区 IP 的封锁，或者当您处于网络监管较严的东南亚区域时，我们建议统一使用中转链路。通过中转调度，可以强制绕过封锁区域的路由限制，确保您的 IP 资源可用性。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q21: 为什么我的指纹浏览器显示 IP 地理位置与我选的国家不符？</button><div class="faq-answer">这通常是由于 IP 库更新滞后或中转节点调度的原因。只要您确认配置的是正确的出口节点，网站识别到的物理位置即为您的出口 IP 地址，不会影响业务判定。中转链路仅负责数据的安全传输与路由绕行，不会改变您最终出口 IP 的归属地。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q22: 使用你们的代理，可以绕过 TikTok/Facebook 的“地域限制”吗？</button><div class="faq-answer">可以。我们提供的是纯净的原生住宅 IP，配合我们的中转链路调度，能够有效绕过绝大多数平台的地域封锁（Geo-blocking）。中转机制能够确保即使在处于特定网络封锁的国家，也能实现出口 IP 与目标平台的原生连接，平台会将您视为当地真实用户。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q23: 我是做海外问卷调查 (Survey) 的，代理 IP 会被识别为“机房数据中心”吗？</button><div class="faq-answer">我们提供的代理资源均经过中转链路的深度适配。由于很多地区存在网络限制，直连 IP 往往由于路由特征被平台标记，而我们的中转链路会剥离这些异常特征。我们提供的资源更偏向于住宅与商业宽带属性，能够规避大多数平台因路由问题导致的 IP 标记，最大程度提升您的运营成功率。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q24: 代理账号密码可以同时在不同设备上登录吗？</button><div class="faq-answer">为了保证您的流量稳定和账号安全，我们不建议这样做。多个设备同时连接同一套 IP 账号可能会导致流量统计异常或连接冲突。建议每个运行环境（指纹浏览器/设备）分别对应独立的 IP 配置，以实现最彻底的业务隔离。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q25: 如果遇到特殊的业务场景，你们是否提供定制化的线路支持？</button><div class="faq-answer">我们目前不提供定制化线路。但对于各类常见的业务场景（如：电商运营、数据采集、社交推广等），我们有非常成熟的通用适配方案。如果您在配置或使用过程中遇到技术难题，欢迎通过底部的 TG 客服与我们联系，我们会协助您进行技术调试，确保您的业务顺利运行。</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">Q26: 我测试代理 IP 显示为国内（或不匹配），是我没配置好吗？</button><div class="faq-answer">这并非代理 IP 本身的问题，而是由于您所使用的代理软件未实现“全链路接管”导致的。市面上许多代理工具的“全局模式”仅覆盖部分流量，导致您的部分请求（如 UDP、DNS 解析）产生了“旁路泄露”，绕过了代理隧道。排查建议：请务必在代理软件中开启“TUN 模式”或优先使用指纹浏览器（如 AdsPower 等）自带的内置代理配置，由指纹浏览器内核直接处理，能有效规避外部软件产生的流量旁路问题。</div></div>
+        <!-- 分类导航 -->
+        <div class="faq-tabs">
+            <button class="tab-btn active" onclick="filterFAQ('all', this)">全部</button>
+            <button class="tab-btn" onclick="filterFAQ('config', this)">配置与排查</button>
+            <button class="tab-btn" onclick="filterFAQ('matrix', this)">防关联矩阵</button>
+            <button class="tab-btn" onclick="filterFAQ('basic', this)">科普与基础</button>
+        </div>
+
+        <!-- 问答容器 -->
+        <div id="faq-list">
+            <div class="faq-item config"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 为什么我的 IP 经常掉线？</button><div class="faq-answer">请首先检查设备网络稳定性，并确认代理协议配置是否正确。若使用动态 IP，请留意端口生存周期，或联系客服为您调整调度策略。</div></div>
+            <div class="faq-item config"><button class="faq-question" onclick="toggleAnswer(this)">Q10: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟不等）。建议在工具箱中及时更新配置，以确保 IP 处于活跃状态。</div></div>
+            <div class="faq-item config"><button class="faq-question" onclick="toggleAnswer(this)">Q16: 如何判定 IP 被“污染”或“黑名单”了？</button><div class="faq-answer">如果您发现某个 IP 访问主流电商网站时频繁触发验证码，则该 IP 可能已进入风控黑名单。请立即更换出口节点，切忌反复刷新。</div></div>
+            <div class="faq-item config"><button class="faq-question" onclick="toggleAnswer(this)">Q17: 为什么使用代理后，网速非常慢？</button><div class="faq-answer">建议优先选择“原生住宅代理”，并确保指纹浏览器中开启了“UDP 转发”功能，以优化连接效率。</div></div>
+            <div class="faq-item config"><button class="faq-question" onclick="toggleAnswer(this)">Q26: 我测试代理 IP 显示为国内，是我没配置好吗？</button><div class="faq-answer">这通常是由于代理软件未开启“TUN 模式”导致的“旁路泄露”。建议开启全流量接管，或直接在指纹浏览器内置配置中填入代理信息。</div></div>
+
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 如何有效进行电商防关联？</button><div class="faq-answer">使用 FireIP 独享静态原生 IP，保持固定归属地，配合浏览器指纹插件，可极大降低封号风险。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q4: 使用代理 IP 会被平台检测到吗？</button><div class="faq-answer">通过合理的浏览器指纹配置（模拟真实行为），可有效规避各平台检测机制。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q7: 为什么挂了代理还是被封号？</button><div class="faq-answer">指纹泄露（WebRTC, Canvas等）是主因，请务必确保环境体检通过。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q9: 链式代理有什么好处？</button><div class="faq-answer">通过多层转发，能更好隐藏本地特征，是规避高强度网络风控的进阶策略。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q11: 指纹浏览器应选“全局”还是“自动匹配”？</button><div class="faq-answer">建议选“全局”，以确保 WebRTC 和 DNS 解析全部走代理。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q12: 指纹浏览器 WebRTC 设置选什么？</button><div class="faq-answer">请务必选择“替换为代理 IP”，防止真实物理 IP 暴露。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q13: 同一个 IP 可以多环境复用吗？</button><div class="faq-answer">绝对不行，这会产生严重的关联封号风险。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q18: 多账号矩阵最致命的关联因素？</button><div class="faq-answer">除了 IP，插件列表、Canvas 指纹和浏览器缓存都是重要参数，务必保持彻底隔离。</div></div>
+            <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q24: 代理账号可以多设备同时登录吗？</button><div class="faq-answer">不建议，可能会导致流量统计异常或连接冲突。</div></div>
+
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q3: 静态 IP 与动态 IP 选哪个？</button><div class="faq-answer">静态适合长期维护账号，动态适合自动化数据采集。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q5: 如何获取专属技术支持？</button><div class="faq-answer">联系 TG 客服，我们提供一对一技术调试。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q6: IP 池覆盖哪些国家？</button><div class="faq-answer">全球 190+ 国家，支持精准城市定位。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q8: 什么是住宅原生 IP？</button><div class="faq-answer">真实 ISP 分配的家庭宽带段，权重高，是高价值账号首选。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q14: 时区不匹配怎么办？</button><div class="faq-answer">在浏览器指纹设置中开启“基于 IP 自动设置时区”。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q15: 切换代理后时区依然异常？</button><div class="faq-answer">确保指纹浏览器勾选了时区同步功能。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q19: 为什么必须用“中转”链路？</button><div class="faq-answer">中转是跨境连接的必要链路，用于过滤异常路由特征。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q20: 海外使用也需要中转吗？</button><div class="faq-answer">为了应对平台对特定高风险段的封锁，建议统一使用中转链路。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q21: 地理位置不符怎么办？</button><div class="faq-answer">只要出口 IP 正确，中转节点的显示不会影响业务判定。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q22: 能绕过 TikTok 地理封锁吗？</button><div class="faq-answer">可以，原生住宅 IP 配合中转链路可有效绕过 Geo-blocking。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q23: 做问卷会被认作机房 IP 吗？</button><div class="faq-answer">我们的中转链路会剥离机房特征，更接近住宅宽带属性。</div></div>
+            <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q25: 是否有定制线路？</button><div class="faq-answer">目前暂不提供定制，但通用场景适配已非常成熟。</div></div>
+        </div>
     </div>
 </div>
 
@@ -181,6 +197,28 @@
 <div class="theme-toggle" onclick="document.body.classList.toggle('dark-mode')">🌙</div>
 
 <script>
+    // 基础显示所有FAQ
+    window.onload = () => filterFAQ('all');
+
+    function filterFAQ(category, btn) {
+        const items = document.querySelectorAll('.faq-item');
+        items.forEach(item => {
+            if (category === 'all' || item.classList.contains(category)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        if(btn) btn.classList.add('active');
+        else document.querySelector('.tab-btn').classList.add('active');
+    }
+
+    function toggleAnswer(btn) {
+        const answer = btn.nextElementSibling;
+        answer.style.display = (answer.style.display === 'block' ? 'none' : 'block');
+    }
+
     async function getIP() { try { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); document.getElementById('pub-ip').innerText = data.ip; } catch(e) { document.getElementById('pub-ip').innerText = "检测失败"; } }
     function checkWebRTC() {
         const rtc = new RTCPeerConnection({iceServers:[{urls: "stun:stun.l.google.com:19302"}]});
