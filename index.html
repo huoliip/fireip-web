@@ -175,11 +175,19 @@
     }
     getIP(); checkWebRTC();
 
+    // 优化在线人数逻辑：使用基于基准的随机波动，范围更广且更自然
+    let currentCount = 362;
     function updateOnlineCount() {
-        let count = 300 + Math.floor(Math.random() * 150);
-        document.getElementById('online-count').innerText = count;
+        // 随机步长：-50 到 +50 之间
+        let change = Math.floor(Math.random() * 101) - 50;
+        currentCount += change;
+        // 设定合理的人数范围：50 到 800 之间
+        if (currentCount < 50) currentCount = 50 + Math.floor(Math.random() * 50);
+        if (currentCount > 800) currentCount = 800 - Math.floor(Math.random() * 50);
+        
+        document.getElementById('online-count').innerText = currentCount;
     }
-    setInterval(updateOnlineCount, 5000);
+    setInterval(updateOnlineCount, 4000);
 
     function calculateStock() {
         let now = new Date();
