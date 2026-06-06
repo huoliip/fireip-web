@@ -32,8 +32,10 @@
         button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
-        .promo-card { border: 2px solid transparent !important; background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box, linear-gradient(45deg, #f59e0b, #fbbf24, #f59e0b) border-box; animation: gold-breath 3s infinite ease-in-out; margin-bottom: 10px; position: relative; }
-        @keyframes gold-breath { 0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); } 50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); } }
+        
+        /* 蓝色福利卡片样式 */
+        .promo-card { background: #eff6ff !important; border: 2px solid #bfdbfe !important; margin-bottom: 10px; position: relative; }
+        
         .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
         .highlight-orange { color: #d97706; font-weight: bold; font-size: 1.1em; }
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
@@ -59,7 +61,7 @@
         .feature-item b { display: block; color: var(--primary); font-size: 12px; margin-bottom: 2px; }
         .brand-box { border: 1px solid #e2e8f0; }
         
-        /* 突出显示的标题样式 - 已增强 */
+        /* 标题样式 */
         .brand-title { text-align: center; font-weight: 900; color: #1e3a8a; margin: 20px 0 15px 0; font-size: 24px; padding: 15px 10px; background: #eff6ff; border-radius: 15px; border: 2px solid #bfdbfe; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
         .brand-subtitle { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; font-weight: 600; }
         
@@ -123,9 +125,9 @@
 
     <div class="brand-box" id="contact-section">
         <div class="card promo-card">
-            <div style="text-align: center; font-weight: bold; color: #d97706; margin-bottom: 5px;"><span class="highlight-orange">限时</span>福利 (<span class="highlight-red">前10位</span>购入者)</div>
-            <div style="font-size: 13px; color: #92400e; text-align: center;">单次购买动态流量 <b>1T 以上</b>，额外<span class="highlight-red">加赠 100G</span>。</div>
-            <div style="font-size: 11px; color: #b45309; text-align: center; margin-top: 8px;">今日剩余名额：<span id="stock-num" style="font-weight:bold; color:red;">10</span> 个</div>
+            <div style="text-align: center; font-weight: bold; color: #1e3a8a; margin-bottom: 5px;">限时福利 (<span class="highlight-red">前10位</span>购入者)</div>
+            <div style="font-size: 13px; color: #1e40af; text-align: center;">单次购买动态流量 <b>1T 以上</b>，额外<span class="highlight-red">加赠 100G</span>。</div>
+            <div style="font-size: 11px; color: #3b82f6; text-align: center; margin-top: 8px;">今日剩余名额：<span id="stock-num" style="font-weight:bold; color:red;">10</span> 个</div>
         </div>
         <div class="brand-title">⚡ 官方授权【动态】代理品牌 ⚡</div>
         <div class="brand-subtitle">以下均为 FireIP 深度测试且官方授权的优质动态代理商，可享优先通道：</div>
@@ -158,16 +160,13 @@
         <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 常见问题与技术指南 ✨</h3></div>
         <button style="width:100%; margin-bottom:15px; padding:10px; background:#2563eb; color:white; border:none; border-radius:10px; font-weight:bold;" onclick="alert('请联系客服获取新手配置文件及配置录屏教程！')">新手快速上手配置指引 (点击咨询)</button>
         
-        <!-- 分类导航 -->
         <div class="faq-tabs">
             <button class="tab-btn active" onclick="filterFAQ('config', this)">配置与排查</button>
             <button class="tab-btn" onclick="filterFAQ('matrix', this)">防关联矩阵</button>
             <button class="tab-btn" onclick="filterFAQ('basic', this)">科普与基础</button>
         </div>
 
-        <!-- 问答容器 -->
         <div id="faq-list">
-            <!-- 配置与排查 (9 条) -->
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 我测试代理 IP 显示为国内，是我没配置好吗？</button><div class="faq-answer">这并非代理 IP 问题，而是代理软件未开启“TUN 模式”导致旁路泄露。建议使用全流量接管，或在指纹浏览器内配置代理。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 为什么使用代理后，网速非常慢？</button><div class="faq-answer">代理 IP 的质量取决于中转线路。请先检查您的中转节点是否断网或延迟过高。请遵循“就近原则”，优先选择距离您当前地理位置最近的中转节点（例如：人在大陆优先选择香港线路），以获得最佳访问速度。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q3: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟）。请及时在工具箱更新配置，确保 IP 处于活跃状态。</div></div>
@@ -178,7 +177,6 @@
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q8: 我需要一直开启全局代理吗？</button><div class="faq-answer">为了防止隐私泄露，建议在使用指纹浏览器时将该软件设置为“全局”模式。如果是为了日常网页访问，可以使用系统代理插件并配置规则（如只代理特定域名）。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q9: 为什么有时候连接会显示超时？</button><div class="faq-answer">通常是由于网络环境波动或中转服务器过载。建议检查本地网络环境，或尝试更换至该地区的其他优质节点。</div></div>
 
-            <!-- 防关联矩阵 -->
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 如何有效进行电商防关联？</button><div class="faq-answer">使用 FireIP 独享静态原生 IP，配合独立的浏览器指纹环境，可极大降低封号风险。</div></div>
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 为什么挂了代理还是被封号？</button><div class="faq-answer">除 IP 外，指纹环境（WebRTC/Canvas）泄露是主因，请务必保持环境纯净。</div></div>
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q3: 指纹浏览器应选“全局”还是“自动匹配”？</button><div class="faq-answer">建议选“全局”，以确保所有请求（包括 DNS 解析）均强制走代理通道。</div></div>
@@ -189,7 +187,6 @@
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q8: 链式代理有什么好处？</button><div class="faq-answer">通过多层转发提高匿名性，是应对高强度网络风控的进阶策略。</div></div>
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q9: 代理账号可以多设备同时登录吗？</button><div class="faq-answer">不建议。建议每个运行环境对应独立的代理配置，以实现最佳隔离效果。</div></div>
 
-            <!-- 科普与基础 -->
             <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 静态 IP 与动态 IP 选哪个？</button><div class="faq-answer">静态适合长期维护金融/社交账号；动态适合自动化采集与大批量推广任务。</div></div>
             <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 什么是住宅原生 IP？</button><div class="faq-answer">由真实 ISP 分配的家庭宽带段，被识别为真实用户的概率极高，是高权重账号首选。</div></div>
             <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q3: IP 池覆盖哪些国家？</button><div class="faq-answer">覆盖全球 190+ 国家，支持精准到城市级的地理位置定位。</div></div>
@@ -206,33 +203,18 @@
     </div>
 </div>
 
-<!-- 客服按钮 -->
 <a href="#contact-section" class="float-contact">💬</a>
-
-<!-- 夜览按钮 -->
 <div class="theme-toggle" onclick="document.body.classList.toggle('dark-mode')">🌙</div>
 
 <script>
     window.onload = () => filterFAQ('config', document.querySelector('.tab-btn'));
-
     function filterFAQ(category, btn) {
         const items = document.querySelectorAll('.faq-item');
-        items.forEach(item => {
-            if (item.classList.contains(category)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
+        items.forEach(item => { item.style.display = (item.classList.contains(category) ? 'block' : 'none'); });
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         if(btn) btn.classList.add('active');
     }
-
-    function toggleAnswer(btn) {
-        const answer = btn.nextElementSibling;
-        answer.style.display = (answer.style.display === 'block' ? 'none' : 'block');
-    }
-
+    function toggleAnswer(btn) { const answer = btn.nextElementSibling; answer.style.display = (answer.style.display === 'block' ? 'none' : 'block'); }
     async function getIP() { try { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); document.getElementById('pub-ip').innerText = data.ip; } catch(e) { document.getElementById('pub-ip').innerText = "检测失败"; } }
     function checkWebRTC() {
         const rtc = new RTCPeerConnection({iceServers:[{urls: "stun:stun.l.google.com:19302"}]});
@@ -246,13 +228,8 @@
         };
     }
     getIP(); checkWebRTC();
-
-    function updateOnlineCount() {
-        let count = 300 + Math.floor(Math.random() * 150);
-        document.getElementById('online-count').innerText = count;
-    }
+    function updateOnlineCount() { let count = 300 + Math.floor(Math.random() * 150); document.getElementById('online-count').innerText = count; }
     setInterval(updateOnlineCount, 5000);
-
     function calculateStock() {
         let now = new Date();
         let totalMinutesToday = now.getHours() * 60 + now.getMinutes();
@@ -264,7 +241,6 @@
     }
     function syncStock() { document.getElementById('stock-num').innerText = calculateStock(); }
     syncStock(); setInterval(syncStock, 300000); 
-
     function generateQRCode() {
         var rawText = document.getElementById('inputText').value;
         var proto = document.getElementById('protocolSelect').value;
@@ -273,50 +249,35 @@
         var qrcodeDiv = document.getElementById('qrcode');
         var copyAction = document.getElementById('copyAction');
         var toggleContainer = document.getElementById('toggleContainer');
-        
         container.innerHTML = ''; qrcodeDiv.innerHTML = '';
-        
         lines.forEach(function(line, index) {
             var p = line.split(':');
             if(p.length >= 4) {
                 var url = proto === "http://" ? "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1] : proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];
-                
                 var qrWrapper = document.createElement('div');
                 qrWrapper.className = 'qr-item-wrapper';
                 if(lines.length > 1 && index > 0) qrWrapper.style.display = 'none';
-                
                 var qrContainer = document.createElement('div');
                 qrWrapper.appendChild(qrContainer);
                 qrcodeDiv.appendChild(qrWrapper);
-                
                 new QRCode(qrContainer, { text: url, width: 200, height: 200 });
-                
                 var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
             }
         });
-        
         if(lines.length > 0) {
             copyAction.style.display = 'block';
             if(lines.length > 1) toggleContainer.style.display = 'block';
             else toggleContainer.style.display = 'none';
         }
     }
-
     function toggleQRCodes() {
         var items = document.getElementsByClassName('qr-item-wrapper');
-        for(var i = 1; i < items.length; i++) {
-            items[i].style.display = (items[i].style.display === 'none' ? 'block' : 'none');
-        }
+        for(var i = 1; i < items.length; i++) { items[i].style.display = (items[i].style.display === 'none' ? 'block' : 'none'); }
     }
-
     function copyResult() {
         var container = document.getElementById('socksURLContainer');
-        var text = container.innerText;
-        navigator.clipboard.writeText(text).then(function() {
-            alert('所有配置已复制到剪贴板！');
-        });
+        navigator.clipboard.writeText(container.innerText).then(function() { alert('所有配置已复制到剪贴板！'); });
     }
-
     function clearAll() {
         document.getElementById('inputText').value = '';
         document.getElementById('socksURLContainer').innerHTML = '';
