@@ -44,10 +44,11 @@
         textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; resize: vertical; font-size: 14px; color: #333; }
         .protocol-select { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px; font-size: 16px; }
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
-        #qrcode { display:flex; justify-content:center; margin-top:15px; }
+        #qrcode { display:flex; flex-direction: column; align-items: center; margin-top:15px; }
         #socksURLContainer { margin-top: 15px; word-break: break-all; color: var(--text); font-size: 13px; line-height: 1.4; text-align: center; }
         .copy-btn { margin-top: 10px; background: #64748b; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: white; cursor: pointer; margin-right: 5px; }
         .clear-btn { margin-top: 10px; background: #e2e8f0; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: #475569; cursor: pointer; }
+        .toggle-btn { margin-top: 10px; background: #f1f5f9; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #475569; cursor: pointer; }
         .tip-text { font-size: 12px; color: #64748b; margin-top: 10px; text-align: center; line-height: 1.5; padding: 5px; background: #f1f5f9; border-radius: 8px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
         .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
@@ -93,6 +94,9 @@
         <div id="copyAction" style="display:none; text-align:center; margin-top:10px;">
             <button class="copy-btn" onclick="copyResult()">一键复制所有配置</button>
             <button class="clear-btn" onclick="clearAll()">一键清空所有配置</button>
+            <div id="toggleContainer" style="display:none; margin-top:10px;">
+                <button class="toggle-btn" onclick="toggleQRCodes()">点击展开/收起所有二维码</button>
+            </div>
         </div>
         <div class="tip-text">
             <b>手机端用户：</b>请直接扫描上方二维码导入。<br>
@@ -195,16 +199,41 @@
         var container = document.getElementById('socksURLContainer');
         var qrcodeDiv = document.getElementById('qrcode');
         var copyAction = document.getElementById('copyAction');
+        var toggleContainer = document.getElementById('toggleContainer');
+        
         container.innerHTML = ''; qrcodeDiv.innerHTML = '';
-        lines.forEach(function(line) {
+        
+        lines.forEach(function(line, index) {
             var p = line.split(':');
             if(p.length >= 4) {
                 var url = proto === "http://" ? "http://" + p[2] + ":" + p[3] + "@" + p[0] + ":" + p[1] : proto + btoa(p[2] + ':' + p[3]) + '@' + p[0] + ":" + p[1] + '#' + p[0];
+                
+                var qrWrapper = document.createElement('div');
+                qrWrapper.className = 'qr-item';
+                if(index > 0) qrWrapper.style.display = 'none'; // 默认只显示第一个
+                
+                var qrContainer = document.createElement('div');
+                qrWrapper.appendChild(qrContainer);
+                qrcodeDiv.appendChild(qrWrapper);
+                
+                new QRCode(qrContainer, { text: url, width: 200, height: 200 });
+                
                 var div = document.createElement('div'); div.style.marginBottom = "8px"; div.textContent = url; container.appendChild(div);
-                if (container.children.length === 1) new QRCode(qrcodeDiv, { text: url, width: 200, height: 200 });
             }
         });
-        if(container.children.length > 0) copyAction.style.display = 'block';
+        
+        if(lines.length > 0) {
+            copyAction.style.display = 'block';
+            if(lines.length > 1) toggleContainer.style.display = 'block';
+            else toggleContainer.style.display = 'none';
+        }
+    }
+
+    function toggleQRCodes() {
+        var items = document.getElementsByClassName('qr-item');
+        for(var i = 1; i < items.length; i++) {
+            items[i].style.display = (items[i].style.display === 'none' ? 'block' : 'none');
+        }
     }
 
     function copyResult() {
@@ -220,6 +249,7 @@
         document.getElementById('socksURLContainer').innerHTML = '';
         document.getElementById('qrcode').innerHTML = '';
         document.getElementById('copyAction').style.display = 'none';
+        document.getElementById('toggleContainer').style.display = 'none';
     }
 </script>
 </body>
