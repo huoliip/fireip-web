@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <!-- Telegram 分享预览元数据 -->
     <meta property="og:title" content="FireIP - 优质代理服务">
     <meta property="og:description" content="专注海外代理 3 年，已服务 5000+ 电商卖家与工作室。">
     <meta property="og:image" content="https://raw.githubusercontent.com/qianchen8858-dot/my-images/main/photo_2024-12-11_00-42-27.jpg">
     <meta property="og:type" content="website">
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-18BWG0F5ZL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -48,7 +46,8 @@
         button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
         #qrcode { display:flex; justify-content:center; margin-top:15px; }
         #socksURLContainer { margin-top: 15px; word-break: break-all; color: var(--text); font-size: 13px; line-height: 1.4; text-align: center; }
-        .copy-btn { margin-top: 10px; background: #64748b; padding: 8px 16px; font-size: 12px; border-radius: 6px; }
+        .copy-btn { margin-top: 10px; background: #64748b; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: white; cursor: pointer; }
+        .clear-btn { margin-top: 10px; background: #ef4444; padding: 8px 16px; font-size: 12px; border-radius: 6px; border: none; color: white; cursor: pointer; }
         .tip-text { font-size: 12px; color: #64748b; margin-top: 10px; text-align: center; line-height: 1.5; padding: 5px; background: #f1f5f9; border-radius: 8px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
         .features-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
@@ -91,8 +90,9 @@
         <button onclick="generateQRCode()">生成专属二维码</button>
         <div id="qrcode"></div>
         <div id="socksURLContainer"></div>
-        <div id="copyAction" style="display:none; text-align:center;">
+        <div id="copyAction" style="display:none; text-align:center; margin-top:10px;">
             <button class="copy-btn" onclick="copyResult()">一键复制所有配置</button>
+            <button class="clear-btn" onclick="clearAll()">一键清空</button>
         </div>
         <div class="tip-text">
             <b>手机端用户：</b>请直接扫描上方二维码导入。<br>
@@ -209,6 +209,13 @@
         navigator.clipboard.writeText(text).then(function() {
             alert('所有配置已复制到剪贴板！');
         });
+    }
+
+    function clearAll() {
+        document.getElementById('inputText').value = '';
+        document.getElementById('socksURLContainer').innerHTML = '';
+        document.getElementById('qrcode').innerHTML = '';
+        document.getElementById('copyAction').style.display = 'none';
     }
 </script>
 </body>
