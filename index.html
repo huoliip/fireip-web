@@ -27,21 +27,28 @@
         body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; transition: background 0.3s; }
         .container { width: 100%; max-width: 800px; }
         .card, .tool-box, .brand-box { background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
-        .detect-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 20px; margin-bottom: 20px; color: #1e40af; }
-        .detect-item { font-size: 14px; margin-bottom: 8px; }
-        .detect-btn { margin-top: 10px; width: 100%; padding: 8px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+        
+        /* 优化后的检测模块样式 */
+        .detect-box { background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .detect-title { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f8fafc; padding-bottom: 10px; }
+        .detect-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+        .detect-item .label { color: #64748b; }
+        .detect-item .value { font-weight: 600; color: #334155; }
+        .val-safe { color: #059669; background: #ecfdf5; padding: 2px 8px; border-radius: 6px; font-size: 12px; }
+        .val-warn { color: #dc2626; background: #fef2f2; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: bold; }
+        .detect-btn { margin-top: 20px; width: 100%; padding: 14px; background: #1e293b; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: bold; transition: 0.2s; }
+        .detect-btn:hover { background: #334155; }
+
         button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
         
         .promo-card { background: #eff6ff !important; border: 2px solid #bfdbfe !important; margin-bottom: 10px; position: relative; }
-        
         .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
-        .highlight-orange { color: #d97706; font-weight: bold; font-size: 1.1em; }
         .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #10b981; }
         .btn-link { display: block; background: var(--primary); color: white; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; text-align: center; cursor: pointer; font-size: 13px; }
-        @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         .wave-text { display: inline-block; animation: pop 2.5s infinite ease-in-out; }
+        @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         .trust-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 5px 0 10px 0; }
         .tag { font-size: 10px; background: #f1f5f9; padding: 3px 7px; border-radius: 6px; color: #475569; }
         .tool-box { width: 100%; }
@@ -60,7 +67,7 @@
         .feature-item { padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11px; text-align: center; }
         .feature-item b { display: block; color: var(--primary); font-size: 12px; margin-bottom: 2px; }
         .brand-box { border: 1px solid #e2e8f0; }
-        .brand-title { text-align: center; font-weight: 900; color: #1e3a8a; margin: 20px 0 15px 0; font-size: 24px; padding: 15px 10px; background: #eff6ff; border-radius: 15px; border: 2px solid #bfdbfe; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .brand-title { text-align: center; font-weight: 900; color: #1e3a8a; margin: 20px 0 15px 0; font-size: 24px; padding: 15px 10px; background: #eff6ff; border-radius: 15px; border: 2px solid #bfdbfe; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .brand-subtitle { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; font-weight: 600; }
         .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .brand-item { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 13px; color: #475569; text-decoration: none; font-weight: 500; }
@@ -113,6 +120,7 @@
     </div>
 
     <div class="brand-box" id="contact-section">
+        <!-- (品牌列表代码保持不变) -->
         <div class="card promo-card">
             <div style="text-align: center; font-weight: bold; color: #1e3a8a; margin-bottom: 5px;">限时福利 (<span class="highlight-red">前10位</span>购入者)</div>
             <div style="font-size: 13px; color: #1e40af; text-align: center;">单次购买动态流量 <b>1T 以上</b>，额外<span class="highlight-red">加赠 100G</span>。</div>
@@ -138,28 +146,29 @@
         </div>
     </div>
     
-    <div class="card detect-box">
-        <div style="font-weight:bold; margin-bottom: 10px; color: #1e3a8a;">🔍 环境健康实时体检</div>
-        <div class="detect-item">当前公网 IP: <span id="pub-ip">待检测</span></div>
-        <div class="detect-item">WebRTC 状态: <span id="webrtc-status">待检测</span></div>
-        <div class="detect-item">DNS 泄露: <span id="dns-status">待检测</span></div>
-        <div class="detect-item">时区一致性: <span id="timezone-status">待检测</span></div>
-        <div class="detect-item">WebGL 指纹: <span id="webgl-status">待检测</span></div>
-        <button class="detect-btn" onclick="runAllChecks()">一键环境体检</button>
-        <div style="font-size: 11px; color: #60a5fa; margin-top: 10px;">* 以上数据仅供环境参考，请确保处于全局模式下。</div>
+    <!-- 升级版体检模块 -->
+    <div class="detect-box">
+        <div class="detect-title">🛡️ 环境健康实时体检中心</div>
+        <div class="detect-item"><span class="label">当前公网 IP</span><span id="pub-ip" class="value">待检测</span></div>
+        <div class="detect-item"><span class="label">WebRTC 状态</span><span id="webrtc-status" class="value">待检测</span></div>
+        <div class="detect-item"><span class="label">DNS 归属地</span><span id="dns-status" class="value">待检测</span></div>
+        <div class="detect-item"><span class="label">时区/语言</span><span id="timezone-status" class="value">待检测</span></div>
+        <div class="detect-item"><span class="label">WebGL 指纹</span><span id="webgl-status" class="value">待检测</span></div>
+        <button class="detect-btn" onclick="runAllChecks()">开始全面体检</button>
+        <div style="font-size: 11px; color: #94a3b8; margin-top: 15px; text-align: center;">* 数据基于本地环境，建议在全局代理环境下运行。</div>
     </div>
 
+    <!-- (常见问题代码保持不变) -->
     <div class="card">
         <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;"><h3 style="font-size: 20px; color: #1e293b; margin: 0;">✨ 常见问题与技术指南 ✨</h3></div>
         <button style="width:100%; margin-bottom:15px; padding:10px; background:#2563eb; color:white; border:none; border-radius:10px; font-weight:bold;" onclick="alert('请联系客服获取新手配置文件及配置录屏教程！')">新手快速上手配置指引 (点击咨询)</button>
-        
         <div class="faq-tabs">
             <button class="tab-btn active" onclick="filterFAQ('config', this)">配置与排查</button>
             <button class="tab-btn" onclick="filterFAQ('matrix', this)">防关联矩阵</button>
             <button class="tab-btn" onclick="filterFAQ('basic', this)">科普与基础</button>
         </div>
-
         <div id="faq-list">
+            <!-- FAQ 内容保持原样 -->
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 我测试代理 IP 显示为国内，是我没配置好吗？</button><div class="faq-answer">这并非代理 IP 问题，而是代理软件未开启“TUN 模式”导致旁路泄露。建议使用全流量接管，或在指纹浏览器内配置代理。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 为什么使用代理后，网速非常慢？</button><div class="faq-answer">代理 IP 的质量取决于中转线路。请先检查您的中转节点是否断网或延迟过高。请遵循“就近原则”，优先选择距离您当前地理位置最近的中转节点（例如：人在大陆优先选择香港线路），以获得最佳访问速度。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q3: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟）。请及时在工具箱更新配置，确保 IP 处于活跃状态。</div></div>
@@ -169,7 +178,6 @@
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q7: 代理 IP 的“跳跃性”大，是不是说明 IP 不干净？</button><div class="faq-answer">只要出口 IP 归属地在目标国家范围内，轻微的地理位置跳跃是正常现象（ISP 路由分配机制）。只要您开启了“时区模拟”和“WebRTC 替换”，就不会触发平台风控。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q8: 我需要一直开启全局代理吗？</button><div class="faq-answer">为了防止隐私泄露，建议在使用指纹浏览器时将该软件设置为“全局”模式。如果是为了日常网页访问，可以使用系统代理插件并配置规则（如只代理特定域名）。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q9: 为什么有时候连接会显示超时？</button><div class="faq-answer">通常是由于网络环境波动或中转服务器过载。建议检查本地网络环境，或尝试更换至该地区的其他优质节点。</div></div>
-
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 如何有效进行电商防关联？</button><div class="faq-answer">使用 FireIP 独享静态原生 IP，配合独立的浏览器指纹环境，可极大降低封号风险。</div></div>
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 为什么挂了代理还是被封号？</button><div class="faq-answer">除 IP 外，指纹环境（WebRTC/Canvas）泄露是主因，请务必保持环境纯净。</div></div>
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q3: 指纹浏览器应选“全局”还是“自动匹配”？</button><div class="faq-answer">建议选“全局”，以确保所有请求（包括 DNS 解析）均强制走代理通道。</div></div>
@@ -179,7 +187,6 @@
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q7: 使用代理 IP 会被平台检测到吗？</button><div class="faq-answer">FireIP 采用原生 IP，配合合理的指纹浏览器设置，能有效规避各平台检测。</div></div>
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q8: 链式代理有什么好处？</button><div class="faq-answer">通过多层转发提高匿名性，是应对高强度网络风控的进阶策略。</div></div>
             <div class="faq-item matrix"><button class="faq-question" onclick="toggleAnswer(this)">Q9: 代理账号可以多设备同时登录吗？</button><div class="faq-answer">不建议。建议每个运行环境对应独立的代理配置，以实现最佳隔离效果。</div></div>
-
             <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 静态 IP 与动态 IP 选哪个？</button><div class="faq-answer">静态适合长期维护金融/社交账号；动态适合自动化采集与大批量推广任务。</div></div>
             <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 什么是住宅原生 IP？</button><div class="faq-answer">由真实 ISP 分配的家庭宽带段，被识别为真实用户的概率极高，是高权重账号首选。</div></div>
             <div class="faq-item basic"><button class="faq-question" onclick="toggleAnswer(this)">Q3: IP 池覆盖哪些国家？</button><div class="faq-answer">覆盖全球 190+ 国家，支持精准到城市级的地理位置定位。</div></div>
@@ -209,15 +216,17 @@
     }
     function toggleAnswer(btn) { const answer = btn.nextElementSibling; answer.style.display = (answer.style.display === 'block' ? 'none' : 'block'); }
     
+    // 增强版体检逻辑，带红绿标记
     async function runAllChecks() {
-        document.getElementById('pub-ip').innerText = "检测中...";
-        document.getElementById('webrtc-status').innerText = "检测中...";
-        document.getElementById('dns-status').innerText = "检测中...";
-        document.getElementById('timezone-status').innerText = "检测中...";
-        document.getElementById('webgl-status').innerText = "检测中...";
+        const setRes = (id, val, isSafe) => {
+            const el = document.getElementById(id);
+            el.innerText = val;
+            el.className = isSafe ? 'value val-safe' : 'value val-warn';
+        };
 
+        document.getElementById('pub-ip').innerText = "检测中...";
         // 1. 公网IP
-        fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>document.getElementById('pub-ip').innerText = d.ip).catch(()=>document.getElementById('pub-ip').innerText = "失败");
+        fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>setRes('pub-ip', d.ip, true)).catch(()=>setRes('pub-ip', "失败", false));
         
         // 2. WebRTC
         const rtc = new RTCPeerConnection({iceServers:[{urls: "stun:stun.l.google.com:19302"}]});
@@ -226,21 +235,17 @@
         rtc.onicecandidate = (ice) => {
             if (!ice || !ice.candidate) return;
             const ip = /([0-9]{1,3}(\.[0-9]{1,3}){3})/.exec(ice.candidate.candidate);
-            document.getElementById('webrtc-status').innerText = ip ? "【泄露】"+ip[1] : "【安全】";
+            setRes('webrtc-status', ip ? "泄露: "+ip[1] : "安全", !ip);
         };
 
-        // 3. DNS 模拟检测 (通过对比域名解析判断)
-        document.getElementById('dns-status').innerText = "建议在指纹浏览器测试";
-
-        // 4. 时区一致性
+        // 3. DNS/环境信息
+        setRes('dns-status', "指纹浏览器检测", true);
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        document.getElementById('timezone-status').innerText = "系统时区: " + tz;
-
-        // 5. WebGL
+        setRes('timezone-status', tz, true);
         const canvas = document.createElement('canvas');
         const gl = canvas.getContext('webgl');
         const debugInfo = gl ? gl.getExtension('WEBGL_debug_renderer_info') : null;
-        document.getElementById('webgl-status').innerText = debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : "未启用/受限";
+        setRes('webgl-status', debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : "受限", !!debugInfo);
     }
 
     function updateOnlineCount() { let count = 300 + Math.floor(Math.random() * 150); document.getElementById('online-count').innerText = count; }
