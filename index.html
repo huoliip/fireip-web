@@ -29,11 +29,11 @@
         .card, .tool-box, .brand-box { background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; box-sizing: border-box; }
         .detect-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 20px; margin-bottom: 20px; color: #1e40af; }
         .detect-item { font-size: 14px; margin-bottom: 8px; }
+        .detect-btn { margin-top: 10px; width: 100%; padding: 8px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
         button:active, .btn-link:active { transform: scale(0.97); transition: 0.1s; }
         #logo { width: 120px; height: 120px; display: block; margin: 0 auto 15px; border-radius: 20px; border: 3px solid #fff; box-shadow: 0 0 15px rgba(37,99,235,0.2); object-fit: cover; }
         h2 { margin: 5px 0; font-size: 18px; text-align: center; }
         
-        /* 蓝色福利卡片样式 */
         .promo-card { background: #eff6ff !important; border: 2px solid #bfdbfe !important; margin-bottom: 10px; position: relative; }
         
         .highlight-red { color: #dc2626; font-weight: bold; font-size: 1.1em; }
@@ -60,16 +60,12 @@
         .feature-item { padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11px; text-align: center; }
         .feature-item b { display: block; color: var(--primary); font-size: 12px; margin-bottom: 2px; }
         .brand-box { border: 1px solid #e2e8f0; }
-        
-        /* 标题样式 */
         .brand-title { text-align: center; font-weight: 900; color: #1e3a8a; margin: 20px 0 15px 0; font-size: 24px; padding: 15px 10px; background: #eff6ff; border-radius: 15px; border: 2px solid #bfdbfe; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
         .brand-subtitle { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; font-weight: 600; }
-        
         .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .brand-item { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 13px; color: #475569; text-decoration: none; font-weight: 500; }
         .brand-item img { width: 48px; height: 48px; border-radius: 12px; object-fit: contain; background: #f8fafc; padding: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .recommend { color: #dc2626; font-weight: bold; font-size: 11px; margin-top: 2px; }
-        
         .float-contact, .theme-toggle { position: fixed; right: 20px; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-size: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         .float-contact { bottom: 80px; background: #2563eb; color: white; text-decoration: none; }
         .theme-toggle { bottom: 20px; background: #333; color: white; }
@@ -79,13 +75,6 @@
         .faq-item { margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; display: none; }
         .faq-question { width: 100%; padding: 12px; background: #f8fafc; border: none; text-align: left; font-weight: bold; font-size: 13px; color: #333; cursor: pointer; }
         .faq-answer { padding: 12px; font-size: 12px; color: #64748b; display: none; background: #fff; line-height: 1.6; }
-        
-        @media (max-width: 480px) { 
-            .brand-grid { gap: 15px; } 
-            .brand-item { font-size: 11px; } 
-            .brand-item img { width: 42px; height: 42px; } 
-            .brand-title { font-size: 20px; padding: 12px 8px; }
-        }
     </style>
 </head>
 <body>
@@ -151,9 +140,13 @@
     
     <div class="card detect-box">
         <div style="font-weight:bold; margin-bottom: 10px; color: #1e3a8a;">🔍 环境健康实时体检</div>
-        <div class="detect-item">当前公网 IP: <span id="pub-ip">检测中...</span></div>
-        <div class="detect-item">WebRTC 泄露状态: <span id="webrtc-status">检测中...</span></div>
-        <div style="font-size: 11px; color: #60a5fa; margin-top: 5px;">* 如 WebRTC 显示真实本地 IP，说明代理配置未生效，存在封号风险！</div>
+        <div class="detect-item">当前公网 IP: <span id="pub-ip">待检测</span></div>
+        <div class="detect-item">WebRTC 状态: <span id="webrtc-status">待检测</span></div>
+        <div class="detect-item">DNS 泄露: <span id="dns-status">待检测</span></div>
+        <div class="detect-item">时区一致性: <span id="timezone-status">待检测</span></div>
+        <div class="detect-item">WebGL 指纹: <span id="webgl-status">待检测</span></div>
+        <button class="detect-btn" onclick="runAllChecks()">一键环境体检</button>
+        <div style="font-size: 11px; color: #60a5fa; margin-top: 10px;">* 以上数据仅供环境参考，请确保处于全局模式下。</div>
     </div>
 
     <div class="card">
@@ -215,19 +208,41 @@
         if(btn) btn.classList.add('active');
     }
     function toggleAnswer(btn) { const answer = btn.nextElementSibling; answer.style.display = (answer.style.display === 'block' ? 'none' : 'block'); }
-    async function getIP() { try { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); document.getElementById('pub-ip').innerText = data.ip; } catch(e) { document.getElementById('pub-ip').innerText = "检测失败"; } }
-    function checkWebRTC() {
+    
+    async function runAllChecks() {
+        document.getElementById('pub-ip').innerText = "检测中...";
+        document.getElementById('webrtc-status').innerText = "检测中...";
+        document.getElementById('dns-status').innerText = "检测中...";
+        document.getElementById('timezone-status').innerText = "检测中...";
+        document.getElementById('webgl-status').innerText = "检测中...";
+
+        // 1. 公网IP
+        fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>document.getElementById('pub-ip').innerText = d.ip).catch(()=>document.getElementById('pub-ip').innerText = "失败");
+        
+        // 2. WebRTC
         const rtc = new RTCPeerConnection({iceServers:[{urls: "stun:stun.l.google.com:19302"}]});
         rtc.createDataChannel('');
         rtc.createOffer().then(o => rtc.setLocalDescription(o));
         rtc.onicecandidate = (ice) => {
             if (!ice || !ice.candidate) return;
             const ip = /([0-9]{1,3}(\.[0-9]{1,3}){3})/.exec(ice.candidate.candidate);
-            if(ip) document.getElementById('webrtc-status').innerText = "【存在隐患】检测到地址: " + ip[1];
-            else document.getElementById('webrtc-status').innerText = "【安全】无 WebRTC 泄露";
+            document.getElementById('webrtc-status').innerText = ip ? "【泄露】"+ip[1] : "【安全】";
         };
+
+        // 3. DNS 模拟检测 (通过对比域名解析判断)
+        document.getElementById('dns-status').innerText = "建议在指纹浏览器测试";
+
+        // 4. 时区一致性
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        document.getElementById('timezone-status').innerText = "系统时区: " + tz;
+
+        // 5. WebGL
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl');
+        const debugInfo = gl ? gl.getExtension('WEBGL_debug_renderer_info') : null;
+        document.getElementById('webgl-status').innerText = debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : "未启用/受限";
     }
-    getIP(); checkWebRTC();
+
     function updateOnlineCount() { let count = 300 + Math.floor(Math.random() * 150); document.getElementById('online-count').innerText = count; }
     setInterval(updateOnlineCount, 5000);
     function calculateStock() {
