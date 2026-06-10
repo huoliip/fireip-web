@@ -107,6 +107,8 @@
         <button onclick="generateQRCode()">生成专属二维码</button>
         <div id="qrcode"></div>
         <div id="socksURLContainer"></div>
+        <!-- 提示区域一 -->
+        <div style="text-align: center; font-size: 12px; color: #2563eb; margin: 10px 0;">需要更多原生/独享 IP？点击查看：<a href="https://huo.onip.cc" style="color: #2563eb; font-weight: bold;">huo.onip.cc</a></div>
         <div id="copyAction" style="display:none; text-align:center; margin-top:10px;">
             <button class="copy-btn" onclick="copyResult()">一键复制所有配置</button>
             <button class="clear-btn" onclick="clearAll()">一键清空所有配置</button>
@@ -164,6 +166,8 @@
             <button class="tab-btn" onclick="filterFAQ('basic', this)">科普与基础</button>
         </div>
         <div id="faq-list">
+            <!-- 提示区域二 -->
+            <div class="faq-item config" style="display: block;"><button class="faq-question" style="color: #2563eb;" onclick="toggleAnswer(this)">Q: 想要更多类型/区域的 IP？</button><div class="faq-answer" style="display: block;">请访问我们的主站 <a href="https://huo.onip.cc">huo.onip.cc</a> 获取专属线路支持。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q1: 我测试代理 IP 显示为国内，是我没配置好吗？</button><div class="faq-answer">这并非代理 IP 问题，而是代理软件未开启“TUN 模式”导致旁路泄露。建议使用全流量接管，或在指纹浏览器内配置代理。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q2: 为什么使用代理后，网速非常慢？</button><div class="faq-answer">代理 IP 的质量取决于中转线路。请先检查您的中转节点是否断网或延迟过高。请遵循“就近原则”，优先选择距离您当前地理位置最近的中转节点（例如：人在大陆优先选择香港线路），以获得最佳访问速度。</div></div>
             <div class="faq-item config" style="display: block;"><button class="faq-question" onclick="toggleAnswer(this)">Q3: 动态 IP 端口的有效期怎么看？</button><div class="faq-answer">不同套餐动态 IP 有效期不同（通常为 1-60 分钟）。请及时在工具箱更新配置，确保 IP 处于活跃状态。</div></div>
